@@ -58,158 +58,140 @@ body{
 -->
 
 <br>
-<br><br><br><br><br><br>
-<div class="container" style="overflow: hidden;">
-    <h1 style="text-align: center; color: #e30e0e"> Registration form</h1>
-    <h2 style="text-align: left"> Contact Details </h2>
-    <div class="row">
+<!-- Registration Form --> 
+    <h1 style="text-align: center; color: #e30e0e"> Player Registration </h1>
+    <div class="container" style="overflow: hidden;">
+        
+            
+    <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+    <fieldset>
 
-           <div class="col-md-12">
+<!-- Form Name -->
+<legend><center><h2><b>Registration Form</b></h2></center></legend><br>
 
-               <div class="row">
-                  <form style= "width: 100%; margin: 0 auto; " autocomplete = "on" action="register.php" method="POST" enctype="multipart/form-data">
+<!-- Text input-->
 
-					  <div class="col-sm-6">
-						<div class="form-group">
-						  <input type="text" name = "conference-name"id="name" class="form-control" placeholder="Conference Name*" required/>
-						 </div>
-                        </div>
+<div class="form-group">
+  <label class="col-md-4 control-label">First Name</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="first_name" placeholder="First Name" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
 
-                       <div class="col-sm-6">
-					    <div class="form-group">
-						 <input type="email" id="email" name="email"class="form-control" placeholder="Email Address*"  required/>
-						 </div>
-                        </div>
+<!-- Text input-->
 
-                         <div class="col-sm-12">
-					    <div class="form-group">
-						 <input type="text" id="org" name = "org-name"class="form-control" placeholder="Organisation Name"/>
-						 </div>
-                      </div>
-                        <div class="col-sm-12">
-					    <div class="form-group">
-						 <input type="text" id="org" name = "city-state"class="form-control" placeholder="City And State"/>
-						 </div>
-                      </div>
+<div class="form-group">
+  <label class="col-md-4 control-label" >Last Name</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input name="last_name" placeholder="Last Name" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
 
-                      <div class="col-sm-6">
-                      <div class="form-group">
-						 <input type="text" name = "contact-name" id="POC-name" class="form-control" placeholder="Point of Contact ( name)"/>
-						 </div>
-                      </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-						 <input type="text" name = "contact-number" id="POC-number" class="form-control" placeholder="Contact Number " required/>
-						 </div>
-                      </div>
+  <div class="form-group"> 
+  <label class="col-md-4 control-label">Department / Office</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select name="department" class="form-control selectpicker">
+      <option value="">Select your Department/Office</option>
+      <option>Department of Engineering</option>
+      <option>Department of Agriculture</option>
+      <option >Accounting Office</option>
+      <option >Tresurer's Office</option>
+      <option >MPDC</option>
+      <option >MCTC</option>
+      <option >MCR</option>
+      <option >Mayor's Office</option>
+      <option >Tourism Office</option>
+    </select>
+  </div>
+</div>
+</div>
+  
+<!-- Text input-->
 
-<!--                      PART 2 OF THE FORM -->
-                      <h2 style="text-align: left"> Conference Details </h2>
+<div class="form-group">
+  <label class="col-md-4 control-label">Username</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="user_name" placeholder="Username" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
 
-                      <div class="col-sm-6">
-						<div class="form-group">
-						  <input type="date" name = "date" id="date" class="form-control" placeholder="Date of conference*" value="Date of Conference" required/>
-						 </div>
-                        </div>
+<!-- Text input-->
 
-                       <div class="col-sm-6">
-					    <div class="form-group">
-						 <input type="number" name = "num-of-days" id="num-days" class="form-control" placeholder="Number of Days*"  required/>
-						 </div>
-                        </div>
+<div class="form-group">
+  <label class="col-md-4 control-label" >Password</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input name="user_password" placeholder="Password" class="form-control"  type="password">
+    </div>
+  </div>
+</div>
 
-                      <div class="col-sm-6">
-						<div class="form-group">
-						  <input type="text" id="venue" name = "venue" class="form-control" placeholder="Venue of the conference*"  required/>
-						 </div>
-                        </div>
+<!-- Text input-->
 
-                       <div class="col-sm-6">
-					    <div class="form-group">
-						 <input type="text" id="map-location" name="map-location" class="form-control" placeholder="Location on the map (Please provide an Embedded Link)"/>
-						 </div>
-                        </div>
+<div class="form-group">
+  <label class="col-md-4 control-label" >Confirm Password</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input name="confirm_password" placeholder="Confirm Password" class="form-control"  type="password">
+    </div>
+  </div>
+</div>
 
-<!--
-                         <div class="col-sm-12">
-						  <select id="subject" class="form-group form-control">
-							<option value="" selected disabled>Subject</option>
-							<option>Class XI Related Query</option>
-							<option>Class XII Related Query</option>
-							<option>Programs Related Query</option>
-                            <option>Other</option>
-						   </select>
-                          </div>
--->
-
-                       <div class="col-sm-12">
-					    <div class="textarea-message form-group">
-					      <textarea id="message" name="com-and-agenda" class="textarea-message form-control" placeholder="Committees and their Agendas* ( If the agendas have not been decided upon yet, just enter the committees for now and notify us about the agendas later.)" rows="5" required ></textarea>
-						  </div>
-                         </div>
-
-                      <div class="col-sm-6">
-						<div class="form-group">
-						  <input type="text" name="del-fee" id="del-fee" class="form-control" placeholder="Delegate Application Fee*" required/>
-						 </div>
-                        </div>
-
-                       <div class="col-sm-6">
-					    <div class="form-group">
-						 <input type="text" name="ip-fee" id="ip-fee" class="form-control" placeholder="International Press Fee"/>
-						 </div>
-                        </div>
-
-                      <div class="col-sm-6">
-						<div class="form-group">
-						  <input type="url" name="web-link" id="pagelink" class="form-control" placeholder="Link to the FB page / Website*" required/>
-						 </div>
-                        </div>
-
-                       <div class="col-sm-6">
-					    <div class="form-group">
-						 <input type="url" name="del-app" id="del-app" class="form-control" placeholder="Link to the Delegate Application form"/>
-						 </div>
-                        </div>
-
-<!--                      PART 3 OF THE FORM -->
-                      <h2 style = "text-align: left;"> Other Important Details </h2>
-
-                      <div class="col-sm-6">
-					    <div class="form-group">
-						 <input type="text" name="del-number" id="del-num" class="form-control" placeholder="Number of Delegates"/>
-						 </div>
-                        </div>
-
-                      <div class="col-sm-6">
-					    <div class="form-group">
-						 <input type = "file" name = "logo" id="logo" class="form-control" value="Upload a logo" placeholder="Upload a logo"/>
-						 </div>
-                        </div>
+<!-- Text input-->
+       <div class="form-group">
+  <label class="col-md-4 control-label">E-Mail</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+  <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
 
 
-                      <div class="col-sm-12">
-					    <div class="textarea-message form-group">
-					      <textarea name="awards" id="award-message" class="textarea-message form-control" placeholder="Details about the awards and cash prizes (If Any)" rows="5"  ></textarea>
-						  </div>
-                         </div>
+<!-- Text input-->
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Contact No.</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="contact_no" placeholder="(639)" class="form-control" type="text">
+    </div>
+  </div>
+</div>
 
-                      <div class="col-sm-12">
-					    <div class="textarea-message form-group">
-					      <textarea name="overview" id="overview" class="textarea-message form-control" placeholder="Please provide us with a write up or description of the conference*" rows="5" required ></textarea>
-						  </div>
-                         </div>
+<!-- Select Basic -->
 
-                      <div class="col-sm-12">
-					    <div class="textarea-message form-group">
-					      <textarea name="eligibility" id="eligibility" class="textarea-message form-control" placeholder="Eligbility: &nbsp; 1. School Students &#x0a; 2. College students &#x0a; 3. Professionals &#x0a; 4. Both School and College students. &#x0a; 5. All of the above. &#x0a; Please enter the complete text of the option i.e School Students" rows="5"  ></textarea>
-						  </div>
-                         </div>
+<!-- Success message -->
+<div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div>
 
-                  </form>
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4"><br>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+  </div>
+</div>
 
-                    </div>
-                </div>
+</fieldset>
+</form>
+</div>
+    </div><!-- /.container -->
+
         </div>
     </div>
     
