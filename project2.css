@@ -1,0 +1,69 @@
+#login1 {
+    float: right;
+    margin-top: 10px;
+    margin-right: 100px;
+    border-right: 100px;
+    margin-left: 800px;
+}
+.class1 {
+    float: left;
+    margin: 50px;
+    
+}
+#table1 {
+    float: right;
+    width: 750px;
+    height: 400px;
+    margin-right: 125px;
+    margin-top: -450px;
+}
+#img2 {
+    float: left;
+    width: 900px;
+    height: 450px;
+    margin-left: 125px;
+    margin-top: 100px;
+}
+p {
+    margin-left: 125px;
+    font-size: large;
+    font: bold;
+    width: 1800px;
+}
+.heading {
+    color: aqua;
+    margin-left: 125px;
+    font: bolder;
+}
+.element {
+    font-size: large;
+
+}
+
+.flexing {
+    width: fit-content;
+    display: flex;
+    margin-top: 50px;
+    transform: scale(1);
+    transition: 1s;
+}
+
+.flexing img:hover {
+    transform: scale(1.2);
+    transition: 1s;
+}
+.centered {
+    position: relative;
+    top: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+}
+.teams {
+    margin-top: 50px;
+    margin-left: 475px;
+}
+#carouselExampleIndicators {
+    width: 900px;
+    height: 450px;
+    margin-left: 125px;
+}
