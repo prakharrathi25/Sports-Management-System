@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<style>
+body{
+  margin:0 !important ;
+}
+</style>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="">
+<link rel="stylesheet" type="text/css" href="">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Colorlib">
+    <meta name="description" content="#">
+    <meta name="keywords" content="#">
+    <!-- Page Title -->
+    <title>Player Registration</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900" rel="stylesheet">
+    <!-- Simple line Icon -->
+    <link rel="stylesheet" href="css/simple-line-icons.css">
+    <!-- Themify Icon -->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- Hover Effects -->
+    <link rel="stylesheet" href="">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+<!-- JAVA Script Code to stick the NAVBAR -->
+<!--
+<script>
+    $(window).scroll(function() {
+        // 100 = The point you would like to fade the nav in.
+
+        if ($(window).scrollTop() > 100) {
+
+            $('.fixed').addClass('is-sticky');
+
+        } else {
+
+            $('.fixed').removeClass('is-sticky');
+
+        };
+    });
+</script>
+-->
+
+<br>
+<br><br><br><br><br><br>
+<div class="container" style="overflow: hidden;">
+    <h1 style="text-align: center; color: #e30e0e"> Registration form</h1>
+    <h2 style="text-align: left"> Contact Details </h2>
+    <div class="row">
+
+           <div class="col-md-12">
+
+               <div class="row">
+                  <form style= "width: 100%; margin: 0 auto; " autocomplete = "on" action="register.php" method="POST" enctype="multipart/form-data">
+
+					  <div class="col-sm-6">
+						<div class="form-group">
+						  <input type="text" name = "conference-name"id="name" class="form-control" placeholder="Conference Name*" required/>
+						 </div>
+                        </div>
+
+                       <div class="col-sm-6">
+					    <div class="form-group">
+						 <input type="email" id="email" name="email"class="form-control" placeholder="Email Address*"  required/>
+						 </div>
+                        </div>
+
+                         <div class="col-sm-12">
+					    <div class="form-group">
+						 <input type="text" id="org" name = "org-name"class="form-control" placeholder="Organisation Name"/>
+						 </div>
+                      </div>
+                        <div class="col-sm-12">
+					    <div class="form-group">
+						 <input type="text" id="org" name = "city-state"class="form-control" placeholder="City And State"/>
+						 </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                      <div class="form-group">
+						 <input type="text" name = "contact-name" id="POC-name" class="form-control" placeholder="Point of Contact ( name)"/>
+						 </div>
+                      </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+						 <input type="text" name = "contact-number" id="POC-number" class="form-control" placeholder="Contact Number " required/>
+						 </div>
+                      </div>
+
+<!--                      PART 2 OF THE FORM -->
+                      <h2 style="text-align: left"> Conference Details </h2>
+
+                      <div class="col-sm-6">
+						<div class="form-group">
+						  <input type="date" name = "date" id="date" class="form-control" placeholder="Date of conference*" value="Date of Conference" required/>
+						 </div>
+                        </div>
+
+                       <div class="col-sm-6">
+					    <div class="form-group">
+						 <input type="number" name = "num-of-days" id="num-days" class="form-control" placeholder="Number of Days*"  required/>
+						 </div>
+                        </div>
+
+                      <div class="col-sm-6">
+						<div class="form-group">
+						  <input type="text" id="venue" name = "venue" class="form-control" placeholder="Venue of the conference*"  required/>
+						 </div>
+                        </div>
+
+                       <div class="col-sm-6">
+					    <div class="form-group">
+						 <input type="text" id="map-location" name="map-location" class="form-control" placeholder="Location on the map (Please provide an Embedded Link)"/>
+						 </div>
+                        </div>
+
+<!--
+                         <div class="col-sm-12">
+						  <select id="subject" class="form-group form-control">
+							<option value="" selected disabled>Subject</option>
+							<option>Class XI Related Query</option>
+							<option>Class XII Related Query</option>
+							<option>Programs Related Query</option>
+                            <option>Other</option>
+						   </select>
+                          </div>
+-->
+
+                       <div class="col-sm-12">
+					    <div class="textarea-message form-group">
+					      <textarea id="message" name="com-and-agenda" class="textarea-message form-control" placeholder="Committees and their Agendas* ( If the agendas have not been decided upon yet, just enter the committees for now and notify us about the agendas later.)" rows="5" required ></textarea>
+						  </div>
+                         </div>
+
+                      <div class="col-sm-6">
+						<div class="form-group">
+						  <input type="text" name="del-fee" id="del-fee" class="form-control" placeholder="Delegate Application Fee*" required/>
+						 </div>
+                        </div>
+
+                       <div class="col-sm-6">
+					    <div class="form-group">
+						 <input type="text" name="ip-fee" id="ip-fee" class="form-control" placeholder="International Press Fee"/>
+						 </div>
+                        </div>
+
+                      <div class="col-sm-6">
+						<div class="form-group">
+						  <input type="url" name="web-link" id="pagelink" class="form-control" placeholder="Link to the FB page / Website*" required/>
+						 </div>
+                        </div>
+
+                       <div class="col-sm-6">
+					    <div class="form-group">
+						 <input type="url" name="del-app" id="del-app" class="form-control" placeholder="Link to the Delegate Application form"/>
+						 </div>
+                        </div>
+
+<!--                      PART 3 OF THE FORM -->
+                      <h2 style = "text-align: left;"> Other Important Details </h2>
+
+                      <div class="col-sm-6">
+					    <div class="form-group">
+						 <input type="text" name="del-number" id="del-num" class="form-control" placeholder="Number of Delegates"/>
+						 </div>
+                        </div>
+
+                      <div class="col-sm-6">
+					    <div class="form-group">
+						 <input type = "file" name = "logo" id="logo" class="form-control" value="Upload a logo" placeholder="Upload a logo"/>
+						 </div>
+                        </div>
+
+
+                      <div class="col-sm-12">
+					    <div class="textarea-message form-group">
+					      <textarea name="awards" id="award-message" class="textarea-message form-control" placeholder="Details about the awards and cash prizes (If Any)" rows="5"  ></textarea>
+						  </div>
+                         </div>
+
+                      <div class="col-sm-12">
+					    <div class="textarea-message form-group">
+					      <textarea name="overview" id="overview" class="textarea-message form-control" placeholder="Please provide us with a write up or description of the conference*" rows="5" required ></textarea>
+						  </div>
+                         </div>
+
+                      <div class="col-sm-12">
+					    <div class="textarea-message form-group">
+					      <textarea name="eligibility" id="eligibility" class="textarea-message form-control" placeholder="Eligbility: &nbsp; 1. School Students &#x0a; 2. College students &#x0a; 3. Professionals &#x0a; 4. Both School and College students. &#x0a; 5. All of the above. &#x0a; Please enter the complete text of the option i.e School Students" rows="5"  ></textarea>
+						  </div>
+                         </div>
+
+                  </form>
+
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+<!-- Bootstrap JS Scripts --> 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+<!------------------------------------------styling ------------------------------------------------------>
+<style>
+
+</style>
