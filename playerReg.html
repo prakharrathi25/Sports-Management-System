@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -11,189 +11,143 @@
     <title>Player Registration</title>
   </head>
   <body>
-    <!--- FIREBASE Conncection--->
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
-
-    <script>
-      // Your web app's Firebase configuration
-      var firebaseConfig = {
-        apiKey: "AIzaSyDhDDSFNRJuxo09GGM-D7niVcc3ctOlTlo",
-        authDomain: "sports-management-system-11c69.firebaseapp.com",
-        databaseURL: "https://sports-management-system-11c69.firebaseio.com",
-        projectId: "sports-management-system-11c69",
-        storageBucket: "sports-management-system-11c69.appspot.com",
-        messagingSenderId: "382409332013",
-        appId: "1:382409332013:web:6d9163bf95b540966dafa4",
-        measurementId: "G-Z07E6XVWPB"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-      function writeData(){
-          firebase.database().ref("User").set({
-              name: document.getElementsByName("name"),
-              gender: document.getElementsByName("gender"),
-              match_num: document.getElementsByName("match_num"),
-              win_num: document.getElementsByName("win_num"),
-              p_sport: document.getElementsByName("p_sport"),
-              s_sport: document.getElementsByName("s_sport"),
-              team: document.getElementsByName("team"),
-              manager: document.getElementsByName("team")
-              bid: document.getElementsByName("bid"),
-              dept: document.getElementsByName("dept"),
-              join_year:document.getElementsByName("join_year"),
-              level: document.getElementsByName("level"),
-              pass_year:document.getElementsByName("pass_year"),
-              quote: document.getElementsByName("quote")
-
-          })
-      }
-
-      // Our Script Code
-
-    </script>
 
     <h1>Player Registration Form</h1>
+    <a href="index1.html" > GO NOW </a>
 
     <!-- Player registration Form -->
 
-    <form>
+    <form action="includes/player_post.php" method="POST">
 
-      <!-- Text Input -->
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Player Name</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="John Doe" name="name">
-      </div>
+        <!-- Text Input -->
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Player Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Player Full Name" name="name">
+        </div>
 
-      <!-- Email Input -->
-      <!-- <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-      </div> -->
+        <!-- Gender Input -->
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Select Gender</label>
+          <select class="form-control" id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
 
-      <!-- Gender Input -->
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Select Gender</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="gender" required>
-          <option value="m">Male</option>
-          <option value="f">Female</option>
-          <option value="o">Other</option>
-        </select>
-      </div>
+        <!-- Played Matches -->
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Number of Matches Played</label>
+          <input type="number" class="form-control" id="match_num" placeholder="10" name="match_num" required>
+        </div>
 
-      <!-- Played Matches -->
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Number of Matches Played</label>
-        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="10" name="match_num" required>
-      </div>
+        <!-- Wins -->
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Number of Matches Won</label>
+          <input type="number" class="form-control" id="win_num" placeholder="10" name="win_num" required>
+        </div>
 
-      <!-- Wins -->
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Number of Matches Won</label>
-        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="10" name="win_num" required>
-      </div>
+        <!-- Primary sport -->
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Primary Sport</label>
+            <select class="form-control" id="p_sport" name="p_sport" required>
+              <option value=1>Football</option>
+              <option value=2>Tennis</option>
+              <option value=3>Basketball</option>
+              <option value=4>Badminton</option>
+              <option value=5>Volleball</option>
+              <option value=6>Cricket</option>
+              <option value=7>Table Tennis</option>
+              <option value=8>Squash</option>
+              <option value=9>Chess</option>
+            </select>
+          </div>
 
-      <!-- Primary sport -->
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Primary Sport</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="p_sport" required>
-          <option value=1>Football</option>
-          <option value="2">Tennis</option>
-          <option value="3">Basketball</option>
-          <option value="4">Badminton</option>
-          <option value="5">Volleball</option>
-          <option value="6">Cricket</option>
-          <option value="7">Table Tennis</option>
-          <option value="8">Squash</option>
-          <option value=9>Chess</option>
-        </select>
-      </div>
+          <!-- Secondary sport -->
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Secondary Sport</label>
+          <select class="form-control" id="s_sport" name="s_sport" required>
+            <option value=1>Football</option>
+            <option value=2>Tennis</option>
+            <option value=3>Basketball</option>
+            <option value=4>Badminton</option>
+            <option value=5>Volleball</option>
+            <option value=6>Cricket</option>
+            <option value=7>Table Tennis</option>
+            <option value=8>Squash</option>
+            <option value=9>Chess</option>
+          </select>
+        </div>
 
-      <!-- Secondary sport -->
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Secondary Sport</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="s_sport">
-          <option value=1>Football</option>
-          <option value="2">Tennis</option>
-          <option value="3">Basketball</option>
-          <option value="4">Badminton</option>
-          <option value="5">Volleball</option>
-          <option value="6">Cricket</option>
-          <option value="7">Table Tennis</option>
-          <option value="8">Squash</option>
-          <option value=9>Chess</option>
-        </select>
-      </div>
+            <!-- Team Input -->
+         <div class="form-group">
+           <label for="exampleFormControlSelect1">Select Team</label>
+           <select class="form-control" id="team" name="team" required>
+             <option value=1>Panthers</option>
+             <option value=2>Bulls</option>
+             <option value=3>Phoniex</option>
+             <option value=4>Falcons</option>
+           </select>
+         </div>
 
-      <!-- Team Input -->
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Select Team</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="team" required>
-          <option value=1>1</option>
-          <option value=1>2</option>
-          <option value=1>3</option>
-          <option value=1>4</option>
-        </select>
-      </div>
+         <!-- Last Bid  -->
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Last Bid Price</label>
+            <input type="number" class="form-control" id="bid" placeholder="10" name="bid" required>
+          </div>
 
-      <!-- Last Bid  -->
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Last Bid Price</label>
-        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="10" name="bid" required>
-      </div>
+          <!-- Department selction -->
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Department</label>
+            <select class="form-control" id="dept" name="dept" required>
+              <option value="CSE">CSE</option>
+              <option value="ECE/EEE">ECE/EEE</option>
+              <option value="Mechanical">Mechanical</option>
+              <option value="Civil">Civil</option>
+              <option value="Chemical">Chemical</option>
+              <option value="History">History</option>
+              <option value="Sociology">Sociology</option>
+              <option value="Economics">Economics</option>
+              <option value="IRGS">IRGS</option>
+              <option value="BMS">BMS</option>
+              <option value="Mathematics">Mathematics</option>
+              <option value="Physics">Physics</option>
+              <option value="Chemistry">Chemistry</option>
+              <option value="Life Sciences">Life Sciences</option>
+            </select>
+          </div>
 
-      <!-- Department selction -->
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Select Department</label>
-        <select class="form-control"  name="dept" required>
-          <option value="cse">1</option>
-          <option value="cse">2</option>
-          <option value="cse">3</option>
-          <option value="cse">4</option>
-          <option value="cse">5</option>
-          <option value="cse">6</option>
-          <option value="cse">7</option>
-          <option value="cse">8</option>
-          <option value="cse">9</option>
-        </select>
-      </div>
+          <!-- Join Year  -->
+         <div class="form-group">
+           <label for="exampleFormControlInput1">Select the year of joining</label>
+           <input type="number" class="form-control" id="join_year" placeholder="2018" name="join_year" required>
+         </div>
 
-      <!-- Join Year  -->
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Select the year of joining</label>
-        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="2018" name="join_year" required>
-      </div>
+         <!-- pass Year  -->
+         <div class="form-group">
+           <label for="exampleFormControlInput1">Select the year of passing</label>
+           <input type="number" class="form-control" id="pass_year" placeholder="2018" name="pass_year" required>
+         </div>
 
-      <!-- pass Year  -->
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Select the year of passing</label>
-        <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="2018" name="pass_year" required>
-      </div>
+         <!-- Level of Study -->
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Level of Study</label>
+          <select class="form-control" id="level" name="level" required>
+            <option value="ug">Undergraduate</option>
+            <option value="g">Graduate</option>
+            <option value="d">Doctoral</option>
+          </select>
+        </div>
 
-      <!-- Level of Study -->
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Level of Study</label>
-        <select class="form-control" id="exampleFormControlSelect1" name="level" required>
-          <option value="ug">Undergraduate</option>
-          <option value="g">Graduate</option>
-          <option value="d">Doctoral</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1">Add Your Favourite Quote</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="quote"></textarea>
-      </div>
+        <!-- Favourite Quote -->
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Add Your Favourite Quote</label>
+          <textarea class="form-control" id="quote" rows="3" name="quote"></textarea>
+        </div>
 
       <!-- Submit Button -->
-      <button onclick="writeData()" type="submit" name="submit-button" class="btn btn-primary mb-2">Submit Details</button>
+      <button type="submit" name="submit-button" class="btn btn-primary mb-2">Submit Details</button>
     </form>
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
