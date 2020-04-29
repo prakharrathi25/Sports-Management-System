@@ -1,35 +1,63 @@
+<!-- PHP file for posting the player data to the database -->
+
 <?php
 
-    include 'header.php';
+    // Making a server connection
+    $server = "localhost";
+    $username = "root";
+    $password = "mysql@123";
+    $dbname = "sports-database";
+    $conn = mysqli_connect($server, $username, $password, $dbname);
+
+    if ($mysqli -> connect_errno) {
+      echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+    }
 ?>
 <h1> Registration Confirmation </h1>
 
 <?php
 
-if(isset($_POST['register-button'])){
-
     // Declare input variables
-    $name = mysqli_real_escape_string($conn, $_POST['name'];
-    $gender = mysqli_real_escape_string($conn, $_POST['gender'];
-    $$match_num = mysqli_real_escape_string($conn, $_POST['$match_num'];
-    $win_num = mysqli_real_escape_string($conn, $_POST['win_num'];
-    $p_sport = mysqli_real_escape_string($conn, $_POST['p_sport'];
-    $s_sport = mysqli_real_escape_string($conn, $_POST['s_sport'];
-    $team = mysqli_real_escape_string($conn, $_POST['team'];
-    $dept = mysqli_real_escape_string($conn, $_POST['dept'];
-    $join_year = mysqli_real_escape_string($conn, $_POST['join_year'];
-    $level = mysqli_real_escape_string($conn, $_POST['level'];
-    $pass_year = mysqli_real_escape_string($conn, $_POST['pass_year'];
-    $quote = mysqli_real_escape_string($conn, $_POST['quote'];
-    $rating = ($match_num/$win_num) * 100;
+    $name = (string)$_POST['name'];
+    $gender = (string)$_POST['gender'];
+    $match_num = (int)$_POST['match_num'];
+    $win_num = (int)$_POST['win_num'];
+    $p_sport = (int)$_POST['p_sport'];
+    $s_sport = (int)$_POST['s_sport'];
+    $team = (int)$_POST['team'];
+    $manager = (int)$_POST['team'];
+    $bid = (int)$_POST['bid'];
+    $dept = (string)$_POST['dept'];
+    $join_year = (int)$_POST['join_year'];
+    $level = $_POST['level'];
+    $pass_year = (int)$_POST['pass_year'];
+    $quote = $_POST['quote'];
 
-    // SQL Query
-    $sql = "INSERT INTO playerDetails VALUES($name, $gender, $match_num, $win_num, NULL, $p_sport, $s_sport, $rating, $team, $team, $bid, $dept, $join_year,  $level, $pass_year, $quote)";
+    if($match_num > 0 && $win_num > 0){
+      $rating = (($win_num * 100)/$match_num);
+    }
 
-    mysqli_query($conn, $sql);
-}
+    // Testing the inputs
+    echo "$name" . "<br>";
+    echo "$gender" . "<br>";
+    echo "$match_num". "<br>";
+    echo "$win_num" . "<br>";
+    echo "$p_sport" . "<br>";
+    echo "$s_sport" . "<br>";
+    echo "$team" . "<br>";
+    echo "$dept" . "<br>";
+    echo "$join_year" . "<br>";
+    echo "$level" . "<br>";
+    echo "$pass_year" . "<br>";
+    echo "$quote" . "<br>";
+    echo "$rating" . "<br>";
 
-// Display HTML confirmation
+    $sql = "INSERT INTO playerDetails(pname, Gender, playedMatches, wins, picture, primarysportID, secondarySportID, rating, teamID, managerID, lastBid, Department, YearofJoining, LevelofStudy, YearofPassing, quote) VALUES('$name', '$gender', $match_num, $win_num, NULL, $p_sport, $s_sport, $rating, $team, $manager, $bid, '$dept', $join_year,  '$level', $pass_year, '$quote')";
+    echo "$sql";
+
+    // Perform a query, check for error
+    mysqli_query($conn, $sql) or die(mysqli_error($conn));
+
 ?>
 
 <div class="jumbotron text-xs-center">
