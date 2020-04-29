@@ -24,7 +24,7 @@ if(isset($_POST['register-button'])){
     $rating = ($match_num/$win_num) * 100;
 
     // SQL Query
-    $sql = "INSERT INTO playerDetails VALUES(NULL,$name, $gender,$match_num, $win_num, NULL, $p_sport, $s_sport, $rating, $team, $team, $bid, $dept, $join_year,  $level, $pass_year, $quote)";
+    $sql = "INSERT INTO playerDetails VALUES($name, $gender, $match_num, $win_num, NULL, $p_sport, $s_sport, $rating, $team, $team, $bid, $dept, $join_year,  $level, $pass_year, $quote)";
 
     mysqli_query($conn, $sql);
 }

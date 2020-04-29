@@ -20,12 +20,13 @@ ini_set('display_startup_errors', 1); -->
     $s_sport = (int)$_POST['s_sport'];
     $team = (int)$_POST['team'];
     $manager = (int)$_POST['team'];
-    $bid = (int)$_POST['bid'] 
+    $bid = (int)$_POST['bid']; 
     $dept = $_POST['dept'];
     $join_year = (int)$_POST['join_year'];
     $level = $_POST['level'];
     $pass_year = (int)$_POST['pass_year'];
     $quote = $_POST['quote'];
+
     // if($match_num > 0 && $win_num > 0){
     //   $rating = (($win_num * 100)/$match_num);
     // }
@@ -45,7 +46,7 @@ ini_set('display_startup_errors', 1); -->
     echo "$quote" . "<br>";
     echo "$rating" . "<br>";
 
-    $sql = "INSERT INTO playerDetails VALUES($name, $gender, $match_num, $win_num, NULL, $p_sport, $s_sport, NULL, $team, $tseam, $bid, $dept, $join_year,  $level, $pass_year, $quote)";
+    $sql = "INSERT INTO playerDetails VALUES($name, $gender, $match_num, $win_num, NULL, $p_sport, $s_sport, NULL, $team, $manager, $bid, $dept, $join_year,  $level, $pass_year, $quote)";
 
     mysqli_query($conn, $sql)
     // header("Location: ../playerReg.html?entry=success")
