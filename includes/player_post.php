@@ -1,11 +1,13 @@
 <!-- PHP file for posting the player data to the database -->
 
-<!-- error_reporting(-1);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1); -->
-
 <?php
-    include_once 'dbh.php'
+    // include 'dbh.php';
+    $server = "localhost";
+    $username = "root";
+    $password = "mysql@123";
+    $dbname = "sports-database";
+    $conn = mysqli_connect($server,$username,$password, $dbname);
+
 ?>
 <h1> Registration Confirmation </h1>
 
@@ -20,7 +22,7 @@ ini_set('display_startup_errors', 1); -->
     $s_sport = (int)$_POST['s_sport'];
     $team = (int)$_POST['team'];
     $manager = (int)$_POST['team'];
-    $bid = (int)$_POST['bid']; 
+    $bid = (int)$_POST['bid'];
     $dept = $_POST['dept'];
     $join_year = (int)$_POST['join_year'];
     $level = $_POST['level'];
@@ -47,8 +49,8 @@ ini_set('display_startup_errors', 1); -->
     echo "$rating" . "<br>";
 
     $sql = "INSERT INTO playerDetails VALUES($name, $gender, $match_num, $win_num, NULL, $p_sport, $s_sport, NULL, $team, $manager, $bid, $dept, $join_year,  $level, $pass_year, $quote)";
-
-    mysqli_query($conn, $sql)
+    echo "$sql";
+    mysqli_query($conn, $sql);
     // header("Location: ../playerReg.html?entry=success")
 
 ?>
