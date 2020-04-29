@@ -1,0 +1,18 @@
+#login1 {
+    float: right;
+    margin-top: 10px;
+    margin-right: 100px;
+    border-right: 100px;
+    margin-left: 800px;
+}
+.image1 {
+    height: 100px;
+    width: 100px;
+    border-collapse: collapse;
+}
+.table {
+    border-collapse: collapse;
+}
+#Name {
+    margin-left: -100px;
+}

@@ -1,0 +1,100 @@
+#login1 {
+    float: right;
+    margin-top: 10px;
+    margin-right: 100px;
+    border-right: 100px;
+    margin-left: 800px;
+}
+.class1 {
+    float: left;
+    margin: 50px;
+}
+#p {
+    margin-right: 125px;
+    width: fit-content;
+}
+#header1 {
+    margin-left: 100px;
+}
+#table1 {
+    float: right;
+    width: 750px;
+    font-size: large;
+    text-align: center;
+    height: 400px;
+    margin-right: 75px;
+    margin-top: -450px;
+}
+#img2 {
+    float: left;
+    width: 900px;
+    height: 450px;
+    margin-left: 125px;
+    margin-top: 100px;
+}
+p {
+    margin-left: 125px;
+    font-size: large;
+    font: bold;
+    width: 1800px;
+}
+.heading {
+    color: aqua;
+    margin-left: 125px;
+    margin-right: auto;
+    font: bolder;
+}
+.element {
+    font-size: large;
+}
+
+.flexing {
+    display: flexbox;
+    margin-left: 125px;
+    margin-bottom: 50px;
+    transform: scale(1);
+    transition: 1s;
+}
+
+.flexing img:hover {
+    transform: scale(1.1);
+    transition: 1s;
+}
+.teams {
+    margin-top: 50px;
+    margin-left: 125px;
+    margin-right: 125px;
+}
+#carouselExampleIndicators {
+    width: 900px;
+    height: 450px;
+    margin-left: 125px;
+}
+.footer1 {
+    background-color: aqua;
+}
+
+.col-sm-5cols{
+    position: relative;
+    min-height: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.img{
+    max-width: 24.5%;
+}
+#players{
+    margin-left: 125px;
+    width: 1000px;
+    margin-right: 125px;
+}
+.btn1 {
+    width: 420px;
+    height: 100px;
+    margin-bottom: 50px;
+    font-size: 50px;
+}
+#btn {
+    font-size: 40px;
+}
