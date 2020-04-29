@@ -13,11 +13,10 @@
   <body>
 
     <h1>Player Registration Form</h1>
-    <a href="index1.html" > GO NOW </a>
 
     <!-- Player registration Form -->
 
-    <form action="player_reg.php" method="POST">
+    <form action="player_reg.php" method="POST" enctype="multipart/form-data">
 
         <!-- Text Input -->
         <div class="form-group">
@@ -45,6 +44,12 @@
         <div class="form-group">
           <label for="exampleFormControlInput1">Number of Matches Won</label>
           <input type="number" class="form-control" id="win_num" placeholder="10" name="win_num" required>
+        </div>
+
+        <!-- Picture Upload -->
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Upload a picture</label>
+          <input type="file" class="form-control" id="plr_img" placeholder="10" name="plr_img" required>
         </div>
 
         <!-- Primary sport -->
