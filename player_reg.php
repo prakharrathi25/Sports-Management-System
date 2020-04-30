@@ -12,6 +12,7 @@
     if ($mysqli -> connect_errno) {
       echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
     }
+    
 ?>
 <h1> Registration Confirmation </h1>
 
@@ -39,16 +40,12 @@
         if (in_array($fileActualExt, $allowed)){
             // check if any error
             if($fileError === 0){
-                // Check file size
-                if($fileSize < 1000000){
                     // Creating a unique file name
                     $fileNew = uniqid('', true).".".$fileActualExt;
                     $fileDest = 'assets/uploads/'.$fileNew;
 
                     // Function to upload file
                     move_uploaded_file($fileTmpName, $fileDest);
-                } else {
-                    echo "File size too large";
                 }
             }else {
                 echo "There was an error in file upload.";
