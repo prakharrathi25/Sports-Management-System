@@ -5,14 +5,10 @@
     border-right: 100px;
     margin-left: 800px;
 }
-.image1 {
-    height: 100px;
-    width: 100px;
-    border-collapse: collapse;
+.class1 {
+    margin-left: 125px;
+    height: 300px;
 }
-.table {
-    border-collapse: collapse;
-}
-#Name {
-    margin-left: -100px;
+p {
+    font-size: large;
 }
