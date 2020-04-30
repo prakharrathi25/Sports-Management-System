@@ -45,7 +45,7 @@
                 <li class="list-group-item">
                     <div class="form-check">
                         <label for="" class="form-check-label">
-                            <input type="checkbox" class="form-check-input product-check" name="" value="<?= $row['teamName']; ?>" id="brand"> <?= $row['teamName']; ?>
+                            <input type="checkbox" class="form-check-input product-check" name="" value="<?= $row['teamName']; ?>" id="team"> <?= $row['teamName']; ?>
                         </label>
                     </div>
                 </li>
@@ -54,7 +54,7 @@
             <br>
 
             <!-- DISPLAYING Gender options -->
-            <h6 class="text-info">Select Sport</h6>
+            <h6 class="text-info">Select Gender</h6>
             <ul class="list-group">
                 <!-- Getting unique team value for our teams -->
                 <?php
@@ -67,7 +67,7 @@
                 <li class="list-group-item">
                     <div class="form-check">
                         <label for="" class="form-check-label">
-                            <input type="checkbox" class="form-check-input product-check" name="" value="<?= $row['Gender']; ?>" id="brand"> <?= $row['Gender']; ?>
+                            <input type="checkbox" class="form-check-input product-check" name="" value="<?= $row['Gender']; ?>" id="gender"> <?= $row['Gender']; ?>
                         </label>
                     </div>
                 </li>
@@ -89,12 +89,13 @@
                 <li class="list-group-item">
                     <div class="form-check">
                         <label for="" class="form-check-label">
-                            <input type="checkbox" class="form-check-input product-check" name="" value="<?= $row['sName']; ?>" id="brand"> <?= $row['sName']; ?>
+                            <input type="checkbox" class="form-check-input product-check" name="" value="<?= $row['sName']; ?>" id="sport"> <?= $row['sName']; ?>
                         </label>
                     </div>
                 </li>
             <?php } ?>
             </ul>
+            <br>
 
             <!-- DISPLAYING Department OPTIONS -->
             <h6 class="text-info">Select Depatment</h6>
@@ -110,7 +111,7 @@
                 <li class="list-group-item">
                     <div class="form-check">
                         <label for="" class="form-check-label">
-                            <input type="checkbox" class="form-check-input product-check" name="" value="<?= $row['dept']; ?>" id="brand"> <?= $row['dept']; ?>
+                            <input type="checkbox" class="form-check-input product-check" name="" value="<?= $row['dept']; ?>" id="dept"> <?= $row['dept']; ?>
                         </label>
                     </div>
                 </li>
@@ -118,7 +119,7 @@
             </ul>
             <br>
 
-            <!-- DISPLAYING Department OPTIONS -->
+            <!-- DISPLAYING Level OPTIONS -->
             <h6 class="text-info">Select Level of Study</h6>
             <ul class="list-group">
                 <!-- Getting unique team value for our teams -->
@@ -132,7 +133,7 @@
                 <li class="list-group-item">
                     <div class="form-check">
                         <label for="" class="form-check-label">
-                            <input type="checkbox" class="form-check-input product-check" name="" value="<?= $row['level']; ?>" id="brand"> <?= $row['level']; ?>
+                            <input type="checkbox" class="form-check-input product-check" name="" value="<?= $row['level']; ?>" id="level"> <?= $row['level']; ?>
                         </label>
                     </div>
                 </li>
@@ -151,7 +152,7 @@
                 </div>
                 <div class="row" id="result">
                     <?php
-                        $sql = "SELECT p.pname, p.picture, t.teamName FROM playerDetails as p, teamDetails as t WHERE t.tid = p.teamID";
+                        $sql = "SELECT p.pname, p.Department, p.picture, t.teamName FROM playerDetails as p, teamDetails as t WHERE t.tid = p.teamID";
                         $result=mysqli_query($conn, $sql) or die(mysqli_error($conn));
                         while($row = $result->fetch_assoc()){
                     ?>
@@ -164,12 +165,16 @@
                                 </div>
                                 <!-- Body of the content  -->
                                 <div class="card-body">
-                                    <h4 class="card-title text-danger"><?= $row['teamName']; ?></h4>
-                                <?php } ?>
+                                    <h4 class="card-title text-danger text-center"><?= $row['teamName']; ?></h4>
+                                    <p class="text-center">
+                                        <?= $row['Department']; ?> <br>
+                                    </p>
+                                    <a href="#" class="btn btn-success btn-block"> Look at the player</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                <?php } ?>
                 </div>
             </div>
         </div>
@@ -182,5 +187,54 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Adding Style code  -->
+    <style media="screen">
+    .card-img-top {
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+    }
+    </style>
+
+    <!-- Writing the AJAX Code -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // Targetting the check box activity
+            $(".product-check").click(function(){
+                // First show a loader
+                $('#loader').show();
+
+                var action = 'data';
+                var team = get_filter_text('team');
+                var gender = get_filter_text('gender');
+                var sport = get_filter_text('sport');
+                var dept = get_filter_text('dept');
+                var level = get_filter_text('level');
+
+                // php page to handle the queries
+                $.ajax({
+                    url: 'filter.php';
+                    method: 'POST';
+                    data: {action: action, team: team, gender: gender, sport: sport, dept: dept, level: level},
+                    success: function(response){
+
+                        // Changes that will take place once the query returns successfully. 
+                        $("#result").html(response);
+                        $('#loader').hide() // Hide the loader
+                        $('#textChange').text("Filtered Products")
+                    }
+                })
+            });
+
+            function get_filter_text(text_id){
+                var filterData = [];
+                $('#' + text_id + ':checked').each(function(){
+                    fiterData.push($(this).val());
+                });
+                return filterData;
+            }
+        });
+    </script>
   </body>
 </html>
