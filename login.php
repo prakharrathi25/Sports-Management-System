@@ -1,3 +1,18 @@
+<?php
+    session_start();
+    include 'dbh.php';
+    $msg = "";
+
+    // If the button is clicked
+    if(isset($_POST['login'])){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $type = $_POST['userType'];
+
+        $sql = "SELECT * FROM users WHERE username = ? AND password = ? AND type=?"; 
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
@@ -16,10 +31,22 @@
                 <div class="col-lg-5 mt-5 px-0"> <!-- This container can be given a color -->
                     <h3 class="text-center p-3"> User Login </h3>
                     <!--- Creating a form -->
-                    <form class="p-4" action="#" method="post">
+                    <form class="p-4" action="<?= $_SERVER['PHP_SELF']; ?>" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-contrl form-control-lg" name="username" value="" placeholder="Username/Email" required>
+                            <input type="text" class="form-control form-control-lg" name="username" value="" placeholder="Username/Email" required>
                         </div>
+                        <div class="form-group lead">
+                            <input type="password" class="form-control form-control-lg" name="password" value="" placeholder="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userType">I am a :</label><br>
+                            <input type="radio" name="userType" value="player" class="custom-radio" required>&nbsp; Player
+                            <input type="radio" name="userType" value="manager" class="custom-radio" required>&nbsp; Manager
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-block" name="login" value="Login">
+                        </div>
+                        <h5 class="text-center"><?= echo "$msg"; ?></h5>
                     </form>
                 </div>
             </div>
