@@ -4,11 +4,11 @@
     if(isset($_POST['action'])){
 
         // First create a new filtered table
-        $sql_create = "CREATE TABLE filter as (SELECT p.picture, p.pname, p.gender as gender, p.Department as dept, p.levelOfStudy as level, s.sName as sport, t.teamName as team FROM playerDetails as p, teamDetails as t, sportDetails as s WHERE p.teamID = t.tId AND s.sID = p.primarysportID)";
+        $sql_create = "CREATE TABLE filter as (SELECT p.pid, p.picture, p.pname, p.gender as gender, p.Department as dept, p.levelOfStudy as level, s.sName as sport, t.teamName as team FROM playerDetails as p, teamDetails as t, sportDetails as s WHERE p.teamID = t.tId AND s.sID = p.primarysportID)";
         mysqli_query($conn, $sql_create) or die(mysqli_error($conn));
 
         // Fetch data from the filtered table
-        $sql = "SELECT picture, pname, gender, dept, level, sport, team FROM filter WHERE team !='' ";
+        $sql = "SELECT pid, picture, pname, gender, dept, level, sport, team FROM filter WHERE team !='' ";
 
         // Filters for each attriute
         if(isset($_POST['team'])){
@@ -44,6 +44,7 @@
                 // Ouptut which gets displayed
                 $output .= '<div class="col-md-3 mb-2">
                     <div class="card-deck">
+                    <a href="player.php?id='.$row['pid'].'">
                         <div class="card border-secondary">
                             <img src="'.$row['picture'].'" class="card-img-top">
                             <div class="card-img-overlay">
@@ -55,9 +56,9 @@
                                 <p class="text-center">
                                     '.$row['dept'].'<br>
                                 </p>
-                                <a href="#" class="btn btn-success btn-block">Player Details</a>
                             </div>
                         </div>
+                    </a>
                     </div>
                 </div>';
             }

@@ -37,7 +37,7 @@
                 <!-- Getting unique team value for our teams -->
                 <?php
                     $team_sql = "SELECT teamName FROM teamDetails ORDER BY teamName LIMIT 4";
-                    $result=mysqli_query($conn, $team_sql) or die(mysqli_error($conn));
+                    $result = mysqli_query($conn, $team_sql) or die(mysqli_error($conn));
 
                     // Display results in a while loop
                     while($row=$result->fetch_assoc()){
@@ -58,8 +58,8 @@
             <ul class="list-group">
                 <!-- Getting unique team value for our teams -->
                 <?php
-                    $team_sql = "SELECT DISTINCT Gender FROM playerDetails ORDER BY Gender";
-                    $result=mysqli_query($conn, $team_sql) or die(mysqli_error($conn));
+                    $gender_sql = "SELECT DISTINCT Gender FROM playerDetails ORDER BY Gender";
+                    $result=mysqli_query($conn, $gender_sql) or die(mysqli_error($conn));
 
                     // Display results in a while loop
                     while($row=$result->fetch_assoc()){
@@ -142,22 +142,24 @@
 
         </div>
 
-            <!---- Fetching and diplaying the players  -->
+            <!---- DISPLAYING PLAYERS  -->
             <div class="col-lg-9">
                 <h5 class="text-center" id="textChange">All Players</h5>
                 <hr>
+
                 <!-- Made a loader and displayed it through AJAX  -->
                 <div class="text-center">
                     <img src="assets/images/loader.gif" id="loader" alt="" width="200" style="display:none;">
                 </div>
                 <div class="row" id="result">
                     <?php
-                        $sql = "SELECT p.pname, p.Department, p.picture, t.teamName FROM playerDetails as p, teamDetails as t WHERE t.tid = p.teamID";
+                        $sql = "SELECT p.pid, p.pname, p.Department, p.picture, t.teamName FROM playerDetails as p, teamDetails as t WHERE t.tid = p.teamID";
                         $result=mysqli_query($conn, $sql) or die(mysqli_error($conn));
                         while($row = $result->fetch_assoc()){
                     ?>
                     <div class="col-md-3 mb-2">
                         <div class="card-deck">
+                            <a href="player.php?id=<?php echo $row['pid'] ?>">
                             <div class="card border-secondary">
                                 <img src="<?= $row['picture']; ?>" class="card-img-top">
                                 <div class="card-img-overlay">
@@ -169,9 +171,11 @@
                                     <p class="text-center">
                                         <?= $row['Department']; ?> <br>
                                     </p>
-                                    <a href="#" class="btn btn-success btn-block"> Look at the player</a>
-                                </div>
+                                    <!-- <a href='player.php?id=".$row['pid']."' class="btn btn-success btn-block active"> Player Details </a> -->
+                                    <!-- <a href="index1.html" class="btn btn-primary">Go somewhere</a> -->
+                                </div> <!--- End card body--->
                             </div>
+                        </a>
                         </div>
                     </div>
                 <?php } ?>
@@ -186,7 +190,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
+
     <!-- Adding Style code  -->
     <style media="screen">
     .card-img-top {
