@@ -1,4 +1,5 @@
 <?php
+    // Start session inside the same php file
     session_start();
     include 'dbh.php';
     $msg = "";
@@ -9,7 +10,27 @@
         $password = $_POST['password'];
         $type = $_POST['userType'];
 
-        $sql = "SELECT * FROM users WHERE username = ? AND password = ? AND type=?"; 
+        $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password' AND user_type= '$type'";
+
+        // Send query and get results back
+        $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+        $row = $result->fetch_assoc();
+
+        // Generate a new session ID
+        session_regenerate_id();
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['role'] = $row['user_type'];
+        session_write_close(); // Close the session here
+
+        // Generate different sessions for different users
+        if($result->num_rows==1 && $_SESSION['role']=='player'){
+            header("location:teamplayer.php?team='".$rows['team']."'"); // Take player to update area
+        }else if($result->num_rows==1 && $_SESSION['role']=='manager'){
+            header("location:manager.php?team='".$rows['team']."'"); // Take manager to insert area
+
+        }else{
+            $msg = "Username or Password is Incorrect!"; // if username and password don't match and 0 results are returned
+        }
     }
 ?>
 
@@ -36,7 +57,7 @@
                             <input type="text" class="form-control form-control-lg" name="username" value="" placeholder="Username/Email" required>
                         </div>
                         <div class="form-group lead">
-                            <input type="password" class="form-control form-control-lg" name="password" value="" placeholder="password" required>
+                            <input type="password" class="form-control form-control-lg" name="password" value="" placeholder="Password" required>
                         </div>
                         <div class="form-group">
                             <label for="userType">I am a :</label><br>
@@ -46,7 +67,7 @@
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary btn-block" name="login" value="Login">
                         </div>
-                        <h5 class="text-center"><?= echo "$msg"; ?></h5>
+                        <h5 class="text-center"><?= "$msg"; ?></h5>
                     </form>
                 </div>
             </div>
