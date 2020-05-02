@@ -16,20 +16,23 @@
     <title>Player Registration</title>
   </head>
   <body>
-
-    <h1>Player Registration Form</h1>
+  <div class="container" style="overflow: hidden;">
+    <h1 style=" text-align: center; ">Player Registration Form</h1>
 
     <!-- Player registration Form -->
-
-    <form action="player_reg.php" method="POST" enctype="multipart/form-data">
-
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <form style="width: 100%; margin: 0 auto;" action="player_reg.php" method="POST" enctype="multipart/form-data"></form>
         <!-- Text Input -->
+        <div class="col-sm-6">
         <div class="form-group">
           <label for="exampleFormControlInput1">Player Name</label>
           <input type="text" class="form-control" id="name" placeholder="Player Full Name" name="name">
         </div>
-
+        </div>
         <!-- Gender Input -->
+        <div class="col-sm-6">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Select Gender</label>
           <select class="form-control" id="gender" name="gender" required>
@@ -38,25 +41,38 @@
             <option value="other">Other</option>
           </select>
         </div>
-
+        </div>
         <!-- Played Matches -->
+        <div class="col-sm-6">
         <div class="form-group">
           <label for="exampleFormControlInput1">Number of Matches Played</label>
           <input type="number" class="form-control" id="match_num" placeholder="10" name="match_num" required>
         </div>
-
+        </div>
         <!-- Wins -->
+        <div class="col-sm-6">
         <div class="form-group">
           <label for="exampleFormControlInput1">Number of Matches Won</label>
           <input type="number" class="form-control" id="win_num" placeholder="10" name="win_num" required>
         </div>
-
+        </div>
         <!-- Picture Upload -->
+        <div class="col-sm-3">
         <div class="form-group">
           <label for="exampleFormControlInput1">Upload a picture</label>
           <input type="file" class="form-control" id="plr_img" placeholder="10" name="plr_img" required>
         </div>
-
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Are you a Captain?</label>
+            <select class="form-control" id="level" name="Captain" required>
+              <option value="Yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-3">
         <!-- Primary sport -->
           <div class="form-group">
             <label for="exampleFormControlSelect1">Primary Sport</label>
@@ -72,8 +88,9 @@
               <option value=9>Chess</option>
             </select>
           </div>
-
+          </div>
           <!-- Secondary sport -->
+        <div class="col-sm-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Secondary Sport</label>
           <select class="form-control" id="s_sport" name="s_sport" required>
@@ -88,8 +105,9 @@
             <option value=9>Chess</option>
           </select>
         </div>
-
+        </div>
             <!-- Team Input -->
+        <div class="col-sm-2">
          <div class="form-group">
            <label for="exampleFormControlSelect1">Select Team</label>
            <select class="form-control" id="team" name="team" required>
@@ -99,14 +117,16 @@
              <option value=4>Falcons</option>
            </select>
          </div>
-
+        </div>
          <!-- Last Bid  -->
+         <div class="col-sm-2">
           <div class="form-group">
             <label for="exampleFormControlInput1">Last Bid Price</label>
             <input type="number" class="form-control" id="bid" placeholder="10" name="bid" required>
           </div>
-
+          </div>
           <!-- Department selction -->
+          <div class="col-sm-2">
           <div class="form-group">
             <label for="exampleFormControlSelect1">Select Department</label>
             <select class="form-control" id="dept" name="dept" required>
@@ -126,20 +146,23 @@
               <option value="Life Sciences">Life Sciences</option>
             </select>
           </div>
-
+          </div>
           <!-- Join Year  -->
+          <div class="col-sm-3">
          <div class="form-group">
            <label for="exampleFormControlInput1">Select the year of joining</label>
            <input type="number" class="form-control" id="join_year" placeholder="2018" name="join_year" required>
          </div>
-
+        </div>
          <!-- pass Year  -->
+         <div class="col-sm-3">
          <div class="form-group">
            <label for="exampleFormControlInput1">Select the year of passing</label>
            <input type="number" class="form-control" id="pass_year" placeholder="2018" name="pass_year" required>
          </div>
-
+        </div>
          <!-- Level of Study -->
+         <div class="col-sm-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Level of Study</label>
           <select class="form-control" id="level" name="level" required>
@@ -148,17 +171,28 @@
             <option value="d">Doctoral</option>
           </select>
         </div>
-
+        </div>
         <!-- Favourite Quote -->
+        <div class="col-sm-9">
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Add Your Favourite Quote</label>
-          <textarea class="form-control" id="quote" rows="3" name="quote"></textarea>
+          <textarea class="form-control" id="quote" rows="1" name="quote"></textarea>
         </div>
-
+        </div>
+        
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Highlights</label>
+            <textarea class="form-control" id="quote" rows="3" name="Highlights"></textarea>
+        </div>
+        </form>
+        </div>
+        </div>
+      </div>
       <!-- Submit Button -->
       <button type="submit" name="submit-button" class="btn btn-primary mb-2">Submit Details</button>
-    </form>
-
+   
+  </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   </body>
