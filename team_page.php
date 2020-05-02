@@ -43,8 +43,8 @@
                 </div>
                 <br>
                 <div class="col-lg-12">
-                    <div class="col-lg-6" style="float: left;"><h1>Manager</h1></div>
-                    <div class="col-lg-6" style="float: right;"><p>Prakhar</p></div>
+                    <div class="col-lg-6" style="float: left;"><h3>Manager</h3></div>
+                    <div class="col-lg-6" style="float: right;"><h3>Prakhar</h3></div>
                 <br>
                 <br>
                 <br>
