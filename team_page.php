@@ -32,8 +32,8 @@
             <!-- Displaying all of our filters -->
             <div class="col-lg-3">
                 <!-- teamlogo -->
-                <div style = "width=100%; height = 100%; padding = 20px;">
-                    <img src="assets\images\img2.jpeg">
+                <div class = "col-lg-12" style = "width=100%; height = 100%; padding = 20px;">
+                    <img src="assets\images\img2.jpeg" class="img-fluid" alt="Responsive image">
                 </div>
                 <hr>
                 <!-- Team points and manager-->
@@ -43,6 +43,8 @@
                     <div class="col-lg-6" style="float: left;"><h1>Manager</h1></div>
                     <div class="col-lg-6" style="float: right;"><p>Prakhar</p></div>
                 </div>
+                <br>
+                <br>
                 <br>
                 <!-- DISPLAYING Gender options -->
                 <h6 class="text-info">Select Gender</h6>
