@@ -30,6 +30,7 @@
     <div class="container-fluid">
         <div class="row">
             <h3>Basketball</h3>
+            <br>
             <!-- Displaying all of our filters -->
             <div class="col-lg-3">
                 <div class="col-lg-12">
