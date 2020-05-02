@@ -5,6 +5,7 @@
 
         // First create a new filtered table
         $sql_create = "CREATE TABLE filter as (SELECT p.pid, p.picture, p.pname, p.gender as gender, p.Department as dept, p.levelOfStudy as level, s.sName as sport, t.teamName as team FROM playerDetails as p, teamDetails as t, sportDetails as s WHERE p.teamID = t.tId AND s.sID = p.primarysportID)";
+        
         mysqli_query($conn, $sql_create) or die(mysqli_error($conn));
 
         // Fetch data from the filtered table

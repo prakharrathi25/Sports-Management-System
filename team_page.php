@@ -24,9 +24,9 @@
   </head>
   <body>
     <!-- <h3 class="text-center text-light bg-info"> Displaying all players</h3> -->
-    <!-- NAVBAR AND HEADER --> 
-    
-    <!--- Dislay of player starts --> 
+    <!-- NAVBAR AND HEADER -->
+
+    <!--- Dislay of player starts -->
     <div class="container-fluid">
         <div class="row">
             <!-- Displaying all of our filters -->
@@ -38,17 +38,22 @@
                 <hr>
                 <!-- Team points and manager-->
                 <div class="col-lg-12">
-                    <div class="col-lg-6" style="float: left;"><h1>BULLS</h1></div>
-                    <div class="col-lg-6" style="float: right;"><p>100</p></div>
+                    <h3 class="text-center">BULLS</h3>
                 </div>
                 <div class="col-lg-12">
-                    <div class="col-lg-6" style="float: left;"><h3>Manager</h3></div>
-                    <div class="col-lg-6" style="float: right;"><h3>Prakhar</h3></div>
+                    <div class="col-lg-6" style="float: left;"><h5>Points:</h5></div>
+                    <div class="col-lg-6" style="float: right;"><h5>50</h5></div>
                 </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-6" style="float: left;"><h5>Manager:</h5></div>
+                    <div class="col-lg-6" style="float: right;"><h5>Prakhar</h5></div>
+                </div>
+                <br>
                 <br>
                 <br>
                 <br>
                 <!-- DISPLAYING Gender options -->
+                <h5 class="text-center">Player Filers</h5>
                 <h6 class="text-info">Select Gender</h6>
                 <ul class="list-group">
                     <!-- Getting unique team value for our teams -->
@@ -179,7 +184,7 @@
     </div>
 
 
-    <!--- FOOTER ---> 
+    <!--- FOOTER --->
 
 
     <!-- Optional JavaScript -->

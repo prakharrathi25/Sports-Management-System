@@ -24,9 +24,9 @@
   </head>
   <body>
     <!-- <h3 class="text-center text-light bg-info"> Displaying all players</h3> -->
-    <!-- NAVBAR AND HEADER --> 
-    
-    <!--- Dislay of player starts --> 
+    <!-- NAVBAR AND HEADER -->
+
+    <!--- Dislay of player starts -->
     <div class="container-fluid">
         <div class="row">
             <!-- Displaying all of our filters -->
@@ -188,7 +188,7 @@
     </div>
 
 
-    <!--- FOOTER ---> 
+    <!--- FOOTER --->
 
 
     <!-- Optional JavaScript -->
@@ -233,7 +233,7 @@
                         // Changes that will take place once the query returns successfully.
                         $("#result").html(response);
                         $('#loader').hide() // Hide the loader
-                        $('#textChange').text("Filtered Products")
+                        $('#textChange').text("Filtered Players")
                     }
                 });
             });
