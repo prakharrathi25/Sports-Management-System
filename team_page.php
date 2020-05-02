@@ -40,9 +40,11 @@
                 <div class="col-lg-12">
                     <div class="col-lg-6" style="float: left;"><h1>BULLS</h1></div>
                     <div class="col-lg-6" style="float: right;"><p>100</p></div>
+                </div>
+                <br>
+                <div class="col-lg-12">
                     <div class="col-lg-6" style="float: left;"><h1>Manager</h1></div>
                     <div class="col-lg-6" style="float: right;"><p>Prakhar</p></div>
-                </div>
                 <br>
                 <br>
                 <br>
