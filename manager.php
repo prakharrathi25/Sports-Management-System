@@ -43,9 +43,8 @@
     <title>Player</title>
   </head>
   <body>
-    <!-- <h3 class="text-center text-light bg-info"> Displaying all players</h3> -->
     <!-- NAVBAR AND HEADER -->
-
+    
 
     <!--- Dislay of player starts -->
     <div class="container-fluid">
@@ -54,6 +53,7 @@
             <div class="col-lg-3">
                 <!-- teamlogo -->
                 <div class = "col-lg-12" style = "width=100%; height = 100%; padding = 20px;">
+                    <br>
                     <img src="<?php echo $row['logo']?>" class="img-fluid" alt="Responsive image">
                 </div>
                 <hr>
