@@ -46,6 +46,7 @@
     <!-- <h3 class="text-center text-light bg-info"> Displaying all players</h3> -->
     <!-- NAVBAR AND HEADER -->
 
+
     <!--- Dislay of player starts -->
     <div class="container-fluid">
         <div class="row">
@@ -53,20 +54,20 @@
             <div class="col-lg-3">
                 <!-- teamlogo -->
                 <div class = "col-lg-12" style = "width=100%; height = 100%; padding = 20px;">
-                    <img src="assets\images\img2.jpeg" class="img-fluid" alt="Responsive image">
+                    <img src="<?php echo $row['logo']?>" class="img-fluid" alt="Responsive image">
                 </div>
                 <hr>
                 <!-- Team points and manager-->
                 <div class="col-lg-12">
-                    <h3 class="text-center"><?php echo $row['teamName'] ?></h3>
+                    <h3 class="text-center"><?php echo $row['name'] ?></h3>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-6" style="float: left;"><h5>Team:</h5></div>
+                    <div class="col-lg-6" style="float: right;"><h5><?php echo $row['teamName'] ?></h5></div>
                 </div>
                 <div class="col-lg-12">
                     <div class="col-lg-6" style="float: left;"><h5>Points:</h5></div>
-                    <div class="col-lg-6" style="float: right;"><h5>50</h5></div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="col-lg-6" style="float: left;"><h5>Manager:</h5></div>
-                    <div class="col-lg-6" style="float: right;"><h5>Prakhar</h5></div>
+                    <div class="col-lg-6" style="float: right;"><h5><?php echo $row['points'] ?></h5></div>
                 </div>
                 <br>
                 <br>
@@ -164,7 +165,7 @@
 
             <!---- DISPLAYING PLAYERS  -->
             <div class="col-lg-9">
-                <h5 class="text-center" id="textChange">All Players</h5>
+                <h5 class="text-center" id="textChange">Your Players</h5>
                 <hr>
 
                 <!-- Made a loader and displayed it through AJAX  -->
