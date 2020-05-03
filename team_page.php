@@ -9,6 +9,12 @@
     if ($conn->connect_errno) {
         die("Failed to connect to MySQL: " . $$conn->connect_error);
     }
+
+    // Get TEAM Details
+    $page_id = $_GET['id'];
+    $sql = "SELECT * FROM teamDetails, managerDetails WHERE teamDetails.tid = managerDetails.id AND tid = '$page_id'";
+    $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    $row = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +26,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Player</title>
+    <title>Team Display</title>
   </head>
   <body>
     <!-- <h3 class="text-center text-light bg-info"> Displaying all players</h3> -->
@@ -33,20 +39,20 @@
             <div class="col-lg-3">
                 <!-- teamlogo -->
                 <div class = "col-lg-12" style = "width=100%; height = 100%; padding = 20px;">
-                    <img src="assets\images\img2.jpeg" class="img-fluid" alt="Responsive image">
+                    <img src="<?php echo $row['logo'] ?>" class="img-fluid" alt="Responsive image">
                 </div>
                 <hr>
                 <!-- Team points and manager-->
                 <div class="col-lg-12">
-                    <h3 class="text-center">BULLS</h3>
+                    <h3 class="text-center"><?php echo $row['teamName'] ?></h3>
                 </div>
                 <div class="col-lg-12">
                     <div class="col-lg-6" style="float: left;"><h5>Points:</h5></div>
-                    <div class="col-lg-6" style="float: right;"><h5>50</h5></div>
+                    <div class="col-lg-6" style="float: right;"><h5><?php echo $row['points'] ?></h5></div>
                 </div>
                 <div class="col-lg-12">
                     <div class="col-lg-6" style="float: left;"><h5>Manager:</h5></div>
-                    <div class="col-lg-6" style="float: right;"><h5>Prakhar</h5></div>
+                    <div class="col-lg-6" style="float: right;"><h5><?php echo $row['name'] ?></h5></div>
                 </div>
                 <br>
                 <br>
@@ -152,7 +158,7 @@
                 </div>
                 <div class="row" id="result">
                     <?php
-                        $sql = "SELECT p.pid, p.pname, p.Department, p.picture, t.teamName FROM playerDetails as p, teamDetails as t WHERE t.tid = p.teamID";
+                        $sql = "SELECT p.pid, p.pname, p.Department, p.picture, t.teamName FROM playerDetails as p, teamDetails as t WHERE t.tid = p.teamID AND tid = '$page_id'";
                         $result=mysqli_query($conn, $sql) or die(mysqli_error($conn));
                         while($row = $result->fetch_assoc()){
                     ?>
