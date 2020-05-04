@@ -18,7 +18,7 @@
 
         <!-- NAVBAR OF THE PAGE -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="https://snu.edu.in/"><img src="D:\project\images\images.jpg" class="img-fluid"
+            <a class="navbar-brand" href="https://snu.edu.in/"><img src="assets\images\snu_logo.jpg" class="img-fluid"
                     alt="Responsive image"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
