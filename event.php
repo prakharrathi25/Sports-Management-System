@@ -12,7 +12,6 @@
 
     // Get Match Details
     $page_id = $_GET['id'];
-    $page_id = '2';
     $sql = "SELECT * FROM events WHERE eventID= '$page_id'";
     $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
     $row = $result->fetch_assoc();
@@ -30,6 +29,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <title>Team Display</title>
   </head>
@@ -113,7 +113,7 @@
                         $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
                         while($player_row = $result->fetch_assoc()){
                     ?>
-                    <div class="col-md-3 mb-2">
+                    <div class="col-md-4 mb-3"> <!--- Edit here to fix the number of players visible in the section -->
                         <div class="card-deck">
                             <a href="player.php?id=<?php echo $player_row['pid'] ?>">
                             <div class="card border-secondary">
@@ -127,8 +127,6 @@
                                     <p class="text-center">
                                         <?= $player_row['Department']; ?> <br>
                                     </p>
-                                    <!-- <a href='player.php?id=".$row['pid']."' class="btn btn-success btn-block active"> Player Details </a> -->
-                                    <!-- <a href="index1.html" class="btn btn-primary">Go somewhere</a> -->
                                 </div> <!--- End card body--->
                             </div>
                         </a>
@@ -171,39 +169,18 @@
         </div>
         <hr>
         <br>
-
-        <!--- Adding a card carousel --->
-        <div class="bg-dark container-fluid">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="carousel slide" id = "inam" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-sm-12 col-lg-4">
-                                            <div class="card" style="width: 300px;">
-                                                <img src="assets/images/bulls_logo.jpg" alt="">
-                                                <!--- Complete card data -->
-                                                <!--- LINK https://www.youtube.com/watch?v=WBcCvNASbuc ---> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#inam" class="carousel-control-prev" data-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </a>
-                        <a href="#inam" class="carousel-control-next" data-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div> <!-- Whole Container -->
 
+    <!--- Diplay Similar Events --->
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <h3 class="text-center"> Find Similar Events</h3>
+            </div>
+
+        </div>
+
+    </div>
 
     <!--- FOOTER --->
 
@@ -224,46 +201,6 @@
     }
     </style>
 
-    <!-- Writing the AJAX Code -->
-    <script type="text/javascript">
-        $(document).ready(function(){
-
-            // Targetting the check box activity
-            $(".product_check").click(function(){
-                // First show a loader
-                $("#loader").show();
-
-                var action = 'data';
-                // Fill the IDs that have been assigned in the input field
-                var team = get_filter_text('team');
-                var gender = get_filter_text('gender');
-                var sport = get_filter_text('sport');
-                var dept = get_filter_text('dept');
-                var level = get_filter_text('level');
-
-                // php page to handle the queries
-                $.ajax({
-                    url: 'action.php',
-                    method: 'POST',
-                    data: {action: action, team: team, gender: gender, sport: sport, dept: dept, level: level},
-                    success: function(response){
-                        // Changes that will take place once the query returns successfully.
-                        $("#result").html(response);
-                        $('#loader').hide() // Hide the loader
-                        $('#textChange').text("Filtered Products")
-                    }
-                });
-            });
-
-            function get_filter_text(text_id){
-                var filterData = [];
-                $('#' + text_id + ':checked').each(function(){
-                    filterData.push($(this).val());
-                });
-                console.log(filterData);
-                return filterData;
-            }
-        });
     </script>
   </body>
 </html>

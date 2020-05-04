@@ -14,7 +14,6 @@
         // Filters for each attriute
         if(isset($_POST['team'])){
             $team = implode("','", $_POST['team']);
-            $sql .= "AND team IN('".$team."')";
         }
 
         if(isset($_POST['gender'])){
@@ -73,5 +72,5 @@
         //Drop the table that has been created
         $sql_drop = "DROP TABLE filter";
         mysqli_query($conn, $sql_drop) or die(mysqli_error($conn));
-    } 
+    }
  ?>

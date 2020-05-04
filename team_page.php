@@ -54,12 +54,16 @@
                     <div class="col-lg-6" style="float: left;"><h5>Manager:</h5></div>
                     <div class="col-lg-6" style="float: right;"><h5><?php echo $row['name'] ?></h5></div>
                 </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-6" style="float: left;"><h5>Total Players:</h5></div>
+                    <div class="col-lg-6" style="float: right;"><h5><?php echo $row['numPlayers'] ?></h5></div>
+                </div>
                 <br>
                 <br>
                 <br>
                 <br>
                 <!-- DISPLAYING Gender options -->
-                <h5 class="text-center">Player Filers</h5>
+                <h5 class="text-center">Player Filters</h5>
                 <h6 class="text-info">Select Gender</h6>
                 <ul class="list-group">
                     <!-- Getting unique team value for our teams -->
@@ -298,7 +302,7 @@
                 <?php } ?>
                 </ul>
         </div>
-        
+
         </div>
     </div>
 
