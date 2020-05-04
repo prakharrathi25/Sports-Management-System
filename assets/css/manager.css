@@ -1,0 +1,16 @@
+body{
+    background: #f2f2f2;
+}
+.navbar-inverse{
+    background: #050a2e; 
+    padding: 8px; 
+    font-size: 17px; 
+}
+
+.navbar-nav{
+    padding: 0 0 0 20px; 
+}
+
+.navbar-right{
+    margin-right: 100px; 
+}
