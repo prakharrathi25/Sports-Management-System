@@ -15,7 +15,7 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
     <body>
-
+        <div class="container-fluid">
         <!-- NAVBAR OF THE PAGE -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="https://snu.edu.in/"><img src="assets\images\snu_logo.jpg" class="img-fluid"
@@ -95,103 +95,63 @@
                     </div>
         </nav>
         <!--- NAVBAR END --->
-
-        <!-- PLAYER PAGE START -->
-
-        <!-- Database Connection  -->
-        <?php
-        include 'dbh.php';
-        ?>
-
-        <?php
-            $curr_id = $_GET['id'];
-            $sql = "SELECT * FROM playerDetails WHERE pid = '$curr_id'";
-            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-            $row = $result->fetch_assoc();
-        ?>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-1"></div>
-                <div class="cl-md-3">
-                    <center>
-                        <img style=" border-radius: 5px; border: 1px solid black;" src="<?php echo $row['picture'] ?>" width="500px" height="500px">
-                    </center>
+       </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="cl-md-3">
+                <center>
+                    <img style=" border-radius: 5px; border: 1px solid black;" src="assets/images/basketball.png"width="400px" height="400px">
+                </center>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <br>
+                <br>
+                <br>
+                <div>
+                    <h2>Sport Name:</h2>
                 </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-2">
-                    <br>
-                    <br>
-                    <div>
-                        <h2>Name:</h2>
-                    </div>
-                    <p style=" word-wrap: break-word;"><?php echo $row['pname'] ?></p>
-                    <div>
-                        <h2>Played Matches:</h2>
-                    </div>
-                    <p style=" word-wrap: break-word;"><?php echo $row['playedMatches']; ?></p>
-                    <div>
-                        <h2>Wins:</h2>
-                    </div>
-                    <p style=" word-wrap: break-word;"><?php echo $row['wins']; ?></p>
-                    <div>
-                        <h2>Rating:</h2>
-                    </div>
-                    <p style=" word-wrap: break-word;"><?php echo $row['rating']; ?></p>
+                <p style=" word-wrap: break-word;">Basketball</p>
+                <div>
+                    <h2>Current Details:</h2>
                 </div>
-                <div class="col-md-3">
-                    <br>
-                    <br>
-                    <h3>Sport:</h3>
-                    <p>
-                        <?php
-                            $sql = "SELECT s.sName as sport, p.pid from sportDetails as s, playerDetails as p WHERE s.sID = p.primarySportID";
-                            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                            $r1 = $result->fetch_assoc();
-                            echo $r1['sport'];
-
-                        ?>
-                    </p>
-                    <h3>Team:</h3>
-                    <p>
-                        <?php
-                            $tsql = "SELECT t.teamName as team , p.pid from teamDetails as t, playerDetails as p WHERE t.tid = p.teamID";
-                            $result = mysqli_query($conn, $tsql) or die(mysqli_error($conn));
-                            $r2 = $result->fetch_assoc();
-                            echo $r2['team'];
-                        ?>
-                    </p>
-                    <h3>Department:</h3>
-                    <p><?php echo $row['Department']; ?></p>
-                    <h3>Level of Study:</h3>
-                    <p><?php echo $row['LevelofStudy']; ?></p>
+                <p style=" word-wrap: break-word;">Bulls</p>
+                <div>
+                    <h2>Venue:</h2>
                 </div>
-                <div class="col-md-4">
-                    <br>
-                    <br>
-                </div>
+                <p style=" word-wrap: break-word;">Basketball Court</p>
+            </div>
+            <div class="col-md-4">
+                <br>
+                <br>
             </div>
         </div>
-        <br>
-        <br>
-        <div class="col-lg-6">
-            <div class="Quote" style="margin-left: 125px; clear: both;">
-                <br>
-                <h3>Favorite Quote</h3>
-                <blockquote class="blockquote">
-                    <p class="mb-0"><?php echo $row['quote']; ?></p>
-                </blockquote>
-            </div>
+    </div>
+    <br>
+    <br>
+    <div class="col-lg-6">
+        <div class="Quote" style="margin-left: 125px; clear: both;">
+            <br>
+            <h3>Fixtures</h3>
+            <blockquote class="blockquote">
+                <p class="mb-0">Panthers vs Bulls</p>
+            </blockquote>
         </div>
-        <div class="col-lg-6">
-            <div class="Quote" style="margin-left: 125px; clear: both;">
-                <br>
-                <h3>Highlights</h3>
-                <blockquote class="blockquote">
-                    <p class="mb-0"><?php echo $row['highlight']; ?></p>
-                </blockquote>
+    </div>
+    <div class="col-lg-3">
+        <div class="Quote" style="margin-left: 125px; clear: both;">
+            <br>
+            <h3>Time</h3>
+                <p class="mb-0">7:00</p>
         </div>
-        </body>
-
-
-
+    </div>
+    <div class="col-lg-3">
+        <div class="Quote" style="margin-left: 125px; clear: both;">
+            <br>
+            <h3>Venue</h3>
+            <p class="mb-0">Basketball Court-1</p>
+        </div>
+    </div>
+    </body>
 </html>
