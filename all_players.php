@@ -142,24 +142,31 @@
                 </li>
             <?php } ?>
             </ul>
-
         </div>
 
-            <!---- DISPLAYING PLAYERS  -->
+
             <div class="col-lg-9">
                 <h5 class="text-center" id="textChange">All Players</h5>
                 <hr>
 
-                <!-- Made a loader and displayed it through AJAX  -->
+                <!---- SEARCH BAR --- >
+                <!-- Search form -->
+                <div class="md-form active-purple active-purple-2 mb-3">
+                  <input class="form-control" type="text" placeholder="Search for your favourite players" id="search" aria-label="Search" name="search" style="bacbackground-color: black; ">
+                </div>
+
+                <!---- DISPLAYING PLAYERS  -->
                 <div class="text-center">
                     <img src="assets/images/loader.gif" id="loader" alt="" width="200" style="display:none;">
                 </div>
+
                 <div class="row" id="result">
                     <?php
                         $sql = "SELECT p.pid, p.pname, p.Department, p.picture, t.teamName FROM playerDetails as p, teamDetails as t WHERE t.tid = p.teamID";
                         $result=mysqli_query($conn, $sql) or die(mysqli_error($conn));
                         while($row = $result->fetch_assoc()){
                     ?>
+                    <!-- Made a loader and displayed it through AJAX  -->
                     <div class="col-md-3 mb-2">
                         <div class="card-deck">
                             <a href="player.php?id=<?php echo $row['pid'] ?>">
@@ -207,7 +214,28 @@
     }
     </style>
 
-    <!-- Writing the AJAX Code -->
+    <!-- Writing the AJAX and jQuery Code -->
+
+    <!-- Search Players AJAX and jQuery Code --->
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            // Event triggered when something is written
+            $("#search").keyup(function(){
+                var search = $(this).val();
+
+                $.ajax({
+                    url: 'search_player.php',
+                    method: 'post',
+                    data: {query: search},
+                    success: function(response){
+                        $("result").html(respose);
+                    }
+                });
+            });
+        });
+    </script>
+    <!--- Filter Players AJAX and jQuery Code --->
     <script type="text/javascript">
         $(document).ready(function(){
 

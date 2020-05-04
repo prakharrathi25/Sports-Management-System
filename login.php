@@ -27,7 +27,7 @@
 
         // Generate different sessions for different users
         if($result->num_rows==1 && $_SESSION['role']=='player'){
-            $location = "location:player.php?id=".$page_id;
+            $location = "location:teamplayer.php?id=".$page_id;
             header($location); // Take player to update area
         }else if($result->num_rows==1 && $_SESSION['role']=='manager'){
             $location = "location:manager.php?id=".$page_id;
@@ -54,6 +54,7 @@
         <title>Login to the website</title>
     </head>
     <body>
+        
     <!-- Page Background and designing along with the form -->
     <div class="container">
         <div class="row justify-content-center">

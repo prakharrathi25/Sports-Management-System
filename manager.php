@@ -38,13 +38,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/manager.css">
 
     <title>Player</title>
   </head>
   <body>
     <!-- NAVBAR AND HEADER -->
-    
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="">Web Master</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">News</a></li>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">EVENT</a> </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href = "#"><span class="glyphicon glyphicon-user">Sign Up</span></a></li>  
+                <li><a href = "#"><span class="glyphicon glyphicon-log-in">Login</span></a></li> 
+            </ul>
+        </div>
+    </nav>
 
     <!--- Dislay of player starts -->
     <div class="container-fluid">
