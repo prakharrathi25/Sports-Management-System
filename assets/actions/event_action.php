@@ -20,28 +20,22 @@
 
     if(isset($_POST['action'])){
         // First create a new filtered table
-        // $sql_create = "CREATE TABLE filter as (SELECT events.eventID as id, events.team1, events.team2, events.Date, sportdetails.sName as sport, sportdetails.sport_logo as logo FROM events, sportdetails WHERE sportdetails.sID = events.sport)";
+        $sql_create = "CREATE TABLE filter as (SELECT events.eventID as id, events.teamA, events.teamB, events.Date, sportdetails.sName as sport, sportdetails.sport_logo as logo FROM events, sportdetails WHERE sportdetails.sID = events.sport)";
         //
-        // mysqli_query($conn, $sql_create) or die(mysqli_error($conn));
+        mysqli_query($conn, $sql_create) or die(mysqli_error($conn));
 
         // Fetch data from the filtered table
-        $sql = "SELECT id, logo, sport, team1, team2, Date FROM filter WHERE sport !='' ";
+        $sql = "SELECT id, logo, sport, teamA, teamB, Date FROM filter WHERE sport !='' ";
 
         // Filters for each attriute
         if(isset($_POST['team'])){
-            echo $_POST['team'][0];
-            echo $_POST['team'][1];
-            //$team = implode("','", $_POST['team']);
-            $team;
-            // ALTERNATE QUERY IDE = SELECT * FROM events, teamdetails WHERE (teamdetails.tid = events.team1 OR teamdetails.tid = events.team2) AND (teamdetails.teamName = 'Panthers' OR teamdetails.teamName = "Bulls")
-            //$team = (int)$team;
-            $sql .= "AND team1 IN($team)";
-            echo "$sql";
+            $team = implode("','", $_POST['team']);
+            $sql .= "AND (teamA IN('".$team."')";
         }
 
         if(isset($_POST['team'])){
             $team = implode("','", $_POST['team']);
-            $sql .= "AND team2 IN('".$team."')";
+            $sql .= "OR teamB IN('".$team."'))";
         }
 
         if(isset($_POST['sport'])){
@@ -49,6 +43,7 @@
             $sql .= "AND sport IN('".$sport."')";
         }
 
+        // Send SQL query to filter
         $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
         $output = '';
 
@@ -68,7 +63,7 @@
                             <div class="card-body">
                                 <h4 class="card-title text-danger text-center">'.$row['Date'].'</h4>
                                 <p class="text-center">
-                                    '.$teams[$row['team1']].' vs '.$team[$row['team2']].'<br>
+                                    '.$row['teamA'].' vs '.$row['teamB'].'<br>
                                 </p>
                             </div>
                         </div>

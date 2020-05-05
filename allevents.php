@@ -58,7 +58,7 @@
                 <li class="list-group-item">
                     <div class="form-check">
                         <label for="" class="form-check-label">
-                            <input type="checkbox" class="form-check-input product_check" name="" value="<?= $row['tid']; ?>" id="team"> <?= $row['teamName']; ?>
+                            <input type="checkbox" class="form-check-input product_check" name="" value="<?= $row['teamName']; ?>" id="team"> <?= $row['teamName']; ?>
                         </label>
                     </div>
                 </li>
