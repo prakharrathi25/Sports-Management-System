@@ -254,7 +254,7 @@
 
                 // php page to handle the queries
                 $.ajax({
-                    url: 'action.php',
+                    url: 'assets/actions/action.php',
                     method: 'POST',
                     data: {action: action, team: team, gender: gender, sport: sport, dept: dept, level: level},
                     success: function(response){
