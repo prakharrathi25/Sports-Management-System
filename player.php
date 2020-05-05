@@ -190,6 +190,21 @@
                     <p class="mb-0"><?php echo $row['highlight']; ?></p>
                 </blockquote>
         </div>
+        <br>
+        <br>
+    <div class="col-lg-12">
+    <footer class="main-block dark-bg" style="background: black; padding: 90px;">
+        <div class="container">
+            <div class="row" style="flex-wrap: wrap; display: flex;">
+                <div class="col-lg-12" style="align-self: center;">
+                    <div class="copyright" style="text-align: center;">
+                        <p style="color: #ccc;">Copyright © 2020 SNU Sports. All rights reserved</p>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </footer>
+    </div>
         </body>
 
 
