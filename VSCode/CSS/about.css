@@ -1,0 +1,53 @@
+.navbar
+{
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+#isc
+{
+    width: 1200px;
+    text-align: center;
+}
+.navbar li
+{
+    display: inline-block;
+    padding: 20px, 60px;
+}
+.navbar a
+{
+    text-decoration: none;
+    color: black;
+}
+.SNU
+{
+    background-color: black;
+    color: white;
+    margin-top: 50px;
+    text-align: center;
+    padding: 100px 100px;
+}
+
+.SNU p
+{
+    font-size: 150%;
+}
+.SNUSL
+{
+    background-color: red;
+    color: beige;
+    margin-top: 50px;
+    text-align: center;
+    padding: 100px 100px;
+}
+
+.SNUSL p
+{
+    font-size: 150%;
+}
+
+#monster{
+    height: 100px;
+    width: 100px;
+}
