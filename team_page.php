@@ -130,12 +130,16 @@
                     <div class="col-lg-6" style="float: left;"><h5>Manager:</h5></div>
                     <div class="col-lg-6" style="float: right;"><h5><?php echo $row['name'] ?></h5></div>
                 </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-6" style="float: left;"><h5>Total Players:</h5></div>
+                    <div class="col-lg-6" style="float: right;"><h5><?php echo $row['numPlayers'] ?></h5></div>
+                </div>
                 <br>
                 <br>
                 <br>
                 <br>
                 <!-- DISPLAYING Gender options -->
-                <h5 class="text-center">Player Filers</h5>
+                <h5 class="text-center">Player Filters</h5>
                 <h6 class="text-info">Select Gender</h6>
                 <ul class="list-group">
                     <!-- Getting unique team value for our teams -->
@@ -262,6 +266,119 @@
                 <?php } ?>
                 </div>
             </div>
+
+            <!-- Displaying Logo and filters all of our filters -->
+            <div class="col-lg-3">
+                <!-- teamlogo -->
+                <div class = "col-lg-12" style = "width=100%; height = 100%; padding = 20px;">
+                    <img src="<?php echo $row['logo'] ?>" class="img-fluid" alt="Responsive image">
+                </div>
+                <hr>
+                <!-- Team points and manager-->
+                <div class="col-lg-12">
+                    <h3 class="text-center"><?php echo $row['teamName'] ?></h3>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-6" style="float: left;"><h5>Points:</h5></div>
+                    <div class="col-lg-6" style="float: right;"><h5><?php echo $row['points'] ?></h5></div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-6" style="float: left;"><h5>Manager:</h5></div>
+                    <div class="col-lg-6" style="float: right;"><h5><?php echo $row['name'] ?></h5></div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <!-- DISPLAYING Gender options -->
+                <h5 class="text-center">Player Filers</h5>
+                <h6 class="text-info">Select Gender</h6>
+                <ul class="list-group">
+                    <!-- Getting unique team value for our teams -->
+                    <?php
+                        $gender_sql = "SELECT DISTINCT Gender FROM playerDetails ORDER BY Gender";
+                        $result=mysqli_query($conn, $gender_sql) or die(mysqli_error($conn));
+
+                        // Display results in a while loop
+                        while($row=$result->fetch_assoc()){
+                    ?>
+                    <li class="list-group-item">
+                        <div class="form-check">
+                            <label for="" class="form-check-label">
+                                <input type="checkbox" class="form-check-input product_check" name="" value="<?= $row['Gender']; ?>" id="gender"> <?= $row['Gender']; ?>
+                            </label>
+                        </div>
+                    </li>
+                <?php } ?>
+                </ul>
+                <br>
+
+                <!-- DISPLAYING Sport OPTIONS -->
+                <h6 class="text-info">Select Sport</h6>
+                <ul class="list-group">
+                    <!-- Getting unique team value for our teams -->
+                    <?php
+                        $team_sql = "SELECT sName FROM sportDetails ORDER BY sName";
+                        $result=mysqli_query($conn, $team_sql) or die(mysqli_error($conn));
+
+                        // Display results in a while loop
+                        while($row=$result->fetch_assoc()){
+                    ?>
+                    <li class="list-group-item">
+                        <div class="form-check">
+                            <label for="" class="form-check-label">
+                                <input type="checkbox" class="form-check-input product_check" name="" value="<?= $row['sName']; ?>" id="sport"> <?= $row['sName']; ?>
+                            </label>
+                        </div>
+                    </li>
+                <?php } ?>
+                </ul>
+                <br>
+
+                <!-- DISPLAYING Department OPTIONS -->
+                <h6 class="text-info">Select Depatment</h6>
+                <ul class="list-group">
+                    <!-- Getting unique team value for our teams -->
+                    <?php
+                        $team_sql = "SELECT dept FROM academic ORDER BY dept";
+                        $result=mysqli_query($conn, $team_sql) or die(mysqli_error($conn));
+
+                        // Display results in a while loop
+                        while($row=$result->fetch_assoc()){
+                    ?>
+                    <li class="list-group-item">
+                        <div class="form-check">
+                            <label for="" class="form-check-label">
+                                <input type="checkbox" class="form-check-input product_check" name="" value="<?= $row['dept']; ?>" id="dept"> <?= $row['dept']; ?>
+                            </label>
+                        </div>
+                    </li>
+                <?php } ?>
+                </ul>
+                <br>
+
+                <!-- DISPLAYING Level OPTIONS -->
+                <h6 class="text-info">Select Level of Study</h6>
+                <ul class="list-group">
+                    <!-- Getting unique team value for our teams -->
+                    <?php
+                        $team_sql = "SELECT DISTINCT level FROM academic ORDER BY level";
+                        $result=mysqli_query($conn, $team_sql) or die(mysqli_error($conn));
+
+                        // Display results in a while loop
+                        while($row=$result->fetch_assoc()){
+                    ?>
+                    <li class="list-group-item">
+                        <div class="form-check">
+                            <label for="" class="form-check-label">
+                                <input type="checkbox" class="form-check-input product_check" name="" value="<?= $row['level']; ?>" id="level"> <?= $row['level']; ?>
+                            </label>
+                        </div>
+                    </li>
+                <?php } ?>
+                </ul>
+        </div>
+
         </div>
     </div>
 

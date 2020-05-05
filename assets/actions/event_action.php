@@ -1,24 +1,41 @@
 <?php
-    require 'dbh.php';
+    // Making a server connection
+    $server = "localhost";
+    $username = "root";
+    $password = "mysql@123";
+    $dbname = "sports-database";
+    $conn = mysqli_connect($server, $username, $password, $dbname);
+
+    if ($conn->connect_errno) {
+        die("Failed to connect to MySQL: " . $$conn->connect_error);
+    }
+
+    // Declare global teams array
+    $teams = array(
+        1=> "Panthers",
+        2=> "Bulls",
+        3=> "Phoenix",
+        4=> "Falcons",
+    );
 
     if(isset($_POST['action'])){
-
         // First create a new filtered table
-        $sql_create = "CREATE TABLE filter as (SELECT p.pid, p.picture, p.pname, p.gender as gender, p.Department as dept, p.levelOfStudy as level, s.sName as sport, t.teamName as team FROM playerDetails as p, teamDetails as t, sportDetails as s WHERE p.teamID = t.tId AND s.sID = p.primarysportID)";
-
+        $sql_create = "CREATE TABLE filter as (SELECT events.eventID as id, events.teamA, events.teamB, events.Date, sportdetails.sName as sport, sportdetails.sport_logo as logo FROM events, sportdetails WHERE sportdetails.sID = events.sport)";
+        //
         mysqli_query($conn, $sql_create) or die(mysqli_error($conn));
 
         // Fetch data from the filtered table
-        $sql = "SELECT pid, picture, pname, gender, dept, level, sport, team FROM filter WHERE team !='' ";
+        $sql = "SELECT id, logo, sport, teamA, teamB, Date FROM filter WHERE sport !='' ";
 
         // Filters for each attriute
         if(isset($_POST['team'])){
             $team = implode("','", $_POST['team']);
+            $sql .= "AND (teamA IN('".$team."')";
         }
 
-        if(isset($_POST['gender'])){
-            $gender = implode("','", $_POST['gender']);
-            $sql .= "AND gender IN('".$gender."')";
+        if(isset($_POST['team'])){
+            $team = implode("','", $_POST['team']);
+            $sql .= "OR teamB IN('".$team."'))";
         }
 
         if(isset($_POST['sport'])){
@@ -26,15 +43,7 @@
             $sql .= "AND sport IN('".$sport."')";
         }
 
-        if(isset($_POST['dept'])){
-            $dept = implode("','", $_POST['dept']);
-            $sql .= "AND dept IN('".$dept."')";
-        }
-
-        if(isset($_POST['level'])){
-            $level = implode("','", $_POST['level']);
-            $sql .= "AND level IN('".$level."')";
-        }
+        // Send SQL query to filter
         $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
         $output = '';
 
@@ -44,17 +53,17 @@
                 // Ouptut which gets displayed
                 $output .= '<div class="col-md-3 mb-2">
                     <div class="card-deck">
-                    <a href="player.php?id='.$row['pid'].'">
+                    <a href="player.php?id='.$row['id'].'">
                         <div class="card border-secondary">
-                            <img src="'.$row['picture'].'" class="card-img-top">
+                            <img src="'.$row['logo'].'" class="card-img-top">
                             <div class="card-img-overlay">
-                                <h6 style="margin-top:175px;" class="text-light bg-info text-center rounded p-1">'.$row['pname'].' </h6>
+                                <h6 style="margin-top:175px;" class="text-light bg-info text-center rounded p-1">'.$row['sport'].' </h6>
                             </div>
                             <!-- Body of the content  -->
                             <div class="card-body">
-                                <h4 class="card-title text-danger text-center">'.$row['team'].'</h4>
+                                <h4 class="card-title text-danger text-center">'.$row['Date'].'</h4>
                                 <p class="text-center">
-                                    '.$row['dept'].'<br>
+                                    '.$row['teamA'].' vs '.$row['teamB'].'<br>
                                 </p>
                             </div>
                         </div>
