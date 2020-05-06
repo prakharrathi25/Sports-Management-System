@@ -53,7 +53,7 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -123,6 +123,7 @@
     </nav>
     </div>
     <!--- Dislay of player starts -->
+    <br>
     <div class="container-fluid">
         <div class="row">
             <!-- Displaying all of our filters -->
@@ -250,7 +251,7 @@
                 </div>
                 <div class="row" id="result">
                     <?php
-                        $sql = "SELECT p.pid, p.pname, p.Department, p.picture, t.teamName FROM playerDetails as p, teamDetails as t WHERE t.tid = p.teamID";
+                        $sql = "SELECT p.pid, p.pname, p.Department, p.picture, t.teamName FROM playerDetails as p, teamDetails as t WHERE t.tid = p.teamID AND t.tid = '$page_id'";
                         $result=mysqli_query($conn, $sql) or die(mysqli_error($conn));
                         while($row = $result->fetch_assoc()){
                     ?>
@@ -326,23 +327,31 @@
                 $("#loader").show();
 
                 var action = 'data';
+
                 // Fill the IDs that have been assigned in the input field
-                var team = get_filter_text('team');
+                var team = "<?php
+                $page_id = $_GET['id'];
+                $sql = "SELECT teamName FROM teamDetails WHERE tid = '$page_id'";
+                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                $row = $result->fetch_assoc();
+                echo $row['teamName']?>";
+
+                // Other attributes
                 var gender = get_filter_text('gender');
                 var sport = get_filter_text('sport');
                 var dept = get_filter_text('dept');
-                var level = get_filter_text('level');
+
 
                 // php page to handle the queries
                 $.ajax({
-                    url: 'action.php',
+                    url: 'assets/actions/manager_action.php',
                     method: 'POST',
-                    data: {action: action, team: team, gender: gender, sport: sport, dept: dept, level: level},
+                    data: {action: action, team: team,  gender: gender, sport: sport, dept: dept},
                     success: function(response){
                         // Changes that will take place once the query returns successfully.
                         $("#result").html(response);
                         $('#loader').hide() // Hide the loader
-                        $('#textChange').text("Filtered Products")
+                        $('#textChange').text("Filtered Players")
                     }
                 });
             });
