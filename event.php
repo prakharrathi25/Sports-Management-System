@@ -10,7 +10,7 @@
         die("Failed to connect to MySQL: " . $$conn->connect_error);
     }
 
-    // Get Match Details
+    // Get Event Details
     $page_id = $_GET['id'];
     $sql = "SELECT * FROM events WHERE eventID= '$page_id'";
     $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
