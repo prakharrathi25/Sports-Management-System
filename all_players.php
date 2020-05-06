@@ -33,7 +33,7 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -197,27 +197,6 @@
             <?php } ?>
             </ul>
             <br>
-
-            <!-- DISPLAYING Level OPTIONS -->
-            <h6 class="text-info">Select Level of Study</h6>
-            <ul class="list-group">
-                <!-- Getting unique team value for our teams -->
-                <?php
-                    $team_sql = "SELECT DISTINCT level FROM academic ORDER BY level";
-                    $result=mysqli_query($conn, $team_sql) or die(mysqli_error($conn));
-
-                    // Display results in a while loop
-                    while($row=$result->fetch_assoc()){
-                ?>
-                <li class="list-group-item">
-                    <div class="form-check">
-                        <label for="" class="form-check-label">
-                            <input type="checkbox" class="form-check-input product_check" name="" value="<?= $row['level']; ?>" id="level"> <?= $row['level']; ?>
-                        </label>
-                    </div>
-                </li>
-            <?php } ?>
-            </ul>
         </div>
 
 
@@ -341,13 +320,12 @@
                 var gender = get_filter_text('gender');
                 var sport = get_filter_text('sport');
                 var dept = get_filter_text('dept');
-                var level = get_filter_text('level');
 
                 // php page to handle the queries
                 $.ajax({
                     url: 'assets/actions/action.php',
                     method: 'POST',
-                    data: {action: action, team: team, gender: gender, sport: sport, dept: dept, level: level},
+                    data: {action: action, team: team, gender: gender, sport: sport, dept: dept},
                     success: function(response){
                         // Changes that will take place once the query returns successfully.
                         $("#result").html(response);

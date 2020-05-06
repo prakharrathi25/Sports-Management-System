@@ -7,7 +7,7 @@
     $conn = mysqli_connect($server, $username, $password, $dbname);
 
     if ($conn->connect_errno) {
-        die("Failed to connect to MySQL: " . $$conn->connect_error);
+        die("Failed to connect to MySQL: " . $conn->connect_error);
     }
 
     // Declare global teams array
@@ -73,7 +73,7 @@
             }
         } else{
             // If rows <= 0
-            $output = "<h3> No Player Found! </h3>";
+            $output = "<h3> No Event Found! </h3>";
         }
         // Display output
         echo "$output";

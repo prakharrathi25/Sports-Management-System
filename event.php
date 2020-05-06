@@ -18,6 +18,7 @@
     // Collecting Team IDs in advance
     $team1_id = $row['team1'];
     $team2_id = $row['team2'];
+    $sport_id = $row['sport'];
     $result->close();
 ?>
 <!DOCTYPE html>
@@ -82,7 +83,7 @@
                     <div class="col-lg-6" style="float: right;">
                         <h5>
                             <?php
-                                $sport_sql = "SELECT s.sName, s.sID FROM sportDetails as s, events WHERE s.sID = events.sport";
+                                $sport_sql = "SELECT s.sName, s.sID FROM sportDetails as s, events WHERE (s.sID = events.sport AND events.eventID = $page_id)";
                                 $result = mysqli_query($conn, $sport_sql) or die(mysqli_error($conn));
                                 $sport_row = $result->fetch_assoc();
                                 echo $sport_row['sName'];
@@ -177,6 +178,40 @@
             <div class="col-lg-12">
                 <h3 class="text-center"> Find Similar Events</h3>
             </div>
+            <br>
+
+            <div class="col-lg-12">
+                <div class="row" id="result">
+                    <?php
+
+                        $sql = "SELECT events.eventID, events.teamA, events.teamB, events.Date, sportdetails.sName, sportdetails.sport_logo FROM events, sportdetails WHERE events.sport = sportdetails.sID AND (events.eventID != '$page_id') AND (events.sport = '$sport_id' OR events.team1 IN ('$team1_id', '$team2_id') OR events.team2 IN ('$team2_id', '$team1_id'))";
+
+                        $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                        while($sim_row = $result->fetch_assoc()){
+                    ?>
+                    <!-- Made a loader and displayed it through AJAX  -->
+                    <div class="col-md-3 mb-2">
+                        <div class="card-deck">
+                            <a href="event.php?id=<?php echo $sim_row['eventID'] ?>">
+                            <div class="card border-secondary">
+                                <img src="<?= $sim_row['sport_logo']; ?>" class="card-img-top">
+                                <div class="card-img-overlay">
+                                    <h6 style="margin-top:175px;" class="text-light bg-info text-center rounded p-1"><?= $sim_row['sName']; ?></h6>
+                                </div>
+                                <!-- Body of the content  -->
+                                <div class="card-body">
+                                    <h4 class="card-title text-danger text-center"><?= $row['Date']; ?></h4>
+                                    <p class="text-center">
+                                        <?= $sim_row['teamA']; ?> vs <?= $sim_row['teamB']; ?>  <br>
+                                    </p>
+                                </div> <!--- End card body--->
+                            </div>
+                        </a>
+                        </div>
+                    </div>
+                <?php } ?>
+                </div>
+            </div>
 
         </div>
 
@@ -206,6 +241,6 @@
 
   <?php
     // Close php connections
-    $conn->close(); 
+    $conn->close();
   ?>
 </html>
