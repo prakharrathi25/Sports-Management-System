@@ -15,7 +15,7 @@
     $sql = "SELECT * FROM events WHERE eventID= '$page_id'";
     $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
     $row = $result->fetch_assoc();
-    // Collecting Team IDs before hand
+    // Collecting Team IDs in advance
     $team1_id = $row['team1'];
     $team2_id = $row['team2'];
     $result->close();
@@ -203,4 +203,9 @@
 
     </script>
   </body>
+
+  <?php
+    // Close php connections
+    $conn->close(); 
+  ?>
 </html>
