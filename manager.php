@@ -266,17 +266,33 @@
                                 <!-- Body of the content  -->
                                 <div class="card-body">
                                     <h4 class="card-title text-danger text-center"><?= $row['teamName']; ?></h4>
-                                    <p class="text-center">
+                                    <p style="color: black;" class="text-center">
                                         <?= $row['Department']; ?> <br>
                                     </p>
-                                    <!-- <a href='player.php?id=".$row['pid']."' class="btn btn-success btn-block active"> Player Details </a> -->
-                                    <!-- <a href="index1.html" class="btn btn-primary">Go somewhere</a> -->
                                 </div> <!--- End card body--->
                             </div>
                         </a>
                         </div>
                     </div>
                 <?php } ?>
+                <div class="col-md-3 mb-2">
+                    <div class="card-deck">
+                        <a href="player_reg.html">
+                        <div class="card border-secondary">
+                            <img src="assets/images/plus.JPG" class="card-img-top">
+                            <div class="card-img-overlay">
+                            </div>
+                            <!-- Body of the content  -->
+                            <div class="card-body">
+                                <h4 class="card-title text-danger text-center">New Player?</h4>
+                                <p style="color: black;" class="text-center">
+                                    Add them to you squad!<br>
+                                </p>
+                            </div> <!--- End card body--->
+                        </div>
+                    </a>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
