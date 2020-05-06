@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <link rel="stylesheet" href="./Bootstrap_Upload.css">
+</head>
+<body>
+    <div class="upload">
+        <h1>Photo Uploader</h1>
+        <h2>File Name and Choose file are mandatory fields</h2>
+    </div>
+    <div class="upload-form">
+        <form action="" id="upload-form" method="POST">
+            <input type="text" class="form-control" name="filename" placeholder="File name...">
+            <br>
+            <input type="text" name="filetitle" placeholder="Image title..." class="form-control">
+            <br>
+            <input type="text" name="filedesc" placeholder="Image description..." class="form-control">
+            <br>
+            <input type="file" name="file", class="form-control">
+            <br>
+            <input type="submit" class="form-control submit" value="UPLOAD PHOTO">
+            <br>
+        </form>
+        <form action="./Bootstrap.html">
+            <input type="submit" class="form-control submit" value="Back to Image Gallery">
+        </form>
+    </div>
+</body>
+</html>
