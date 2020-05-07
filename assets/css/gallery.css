@@ -1,24 +1,100 @@
+*{
+    box-sizing: border-box;
+}
 body{
+    margin: 0;
+    padding: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(..assets/images/roger_federer-2560x1440.jpg);
+    background-size: cover;
     font-family: sans-serif;
 }
-h1{
-    text-align: center;
-    color: forestgreen;
-    margin: 30px 0 50px;
+nav{
+    background:black;
+    width: 100%;
+    overflow: auto;
 }
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+li{
+    float: left;
+}
+nav a{
+    width: 150px;
+    display: 120px;
+    text-decoration: none;
+    text-align:center;
+    background:black;
+    font-size: 30px;
+    color: white;
+    padding: 20px 10px;
+    font-family: Arial;
+}
+nav a:hover{
+    background:white;
+    color: black;
+}
+h1{
+    font-size: 32px;
+    line-height: 10px;
+    text-align: center;
+    margin-top: 100;
+    color: #fff;
+    text-transform: uppercase;
+    transition: all 4s ease-in-out;
+}
+.container
+{
+    max-width: 1200px;
+    margin: auto;
+    overflow: auto;
+    background:#fff;
+    transition: all 4s ease-in-out;
+    transition-property: all;
+}
+
 
 .gallery{
-    margin: 10px 50px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 390px;
 }
-
-img{
-    width: 250px;
-    padding: 5px;
-    filter: grayscale(100%);
+.gallery img{
+    width: 100%;
+    height: auto;
     transition: 1s;
 }
+.desc{
+    padding: 15px;
+    text-align: center;
+}
+
 
 img:hover{
-    filter: grayscale(0);
     transform: scale(1.1);
+}
+.gallery-upload
+{
+    padding: 60px;
+}
+
+form .submit
+{
+    background: #f50404;
+    border-color: transparent;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    height: 50px;
+    margin-top: 20px;
+}
+form .submit:hover
+{
+    background-color: #8b0f06;
+    cursor: pointer;
 }

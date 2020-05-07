@@ -17,16 +17,12 @@
         $sql_create = "CREATE TABLE filter as (SELECT p.pid, p.picture, p.pname, p.gender as gender, p.Department as dept, s.sName as sport, t.teamName as team FROM playerDetails as p, teamDetails as t, sportDetails as s WHERE p.teamID = t.tId AND s.sID = p.primarysportID)";
 
         mysqli_query($conn, $sql_create) or die(mysqli_error($conn));
+        $team = $_POST['team'];
 
         // Fetch data from the filtered table
-        $sql = "SELECT pid, picture, pname, gender, dept, sport, team FROM filter WHERE team !='' ";
+        $sql = "SELECT pid, picture, pname, gender, dept, sport, team FROM filter WHERE team IN('".$team."') ";
 
         // Filters for each attriute
-        if(isset($_POST['team'])){
-            $team = $_POST['team'];
-            $sql .= "AND team IN('".$team."')";
-        }
-
         if(isset($_POST['gender'])){
             $gender = implode("','", $_POST['gender']);
             $sql .= "AND gender IN('".$gender."')";
