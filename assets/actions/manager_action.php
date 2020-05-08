@@ -23,6 +23,7 @@
         $sql = "SELECT pid, picture, pname, gender, dept, sport, team FROM filter WHERE team IN('".$team."') ";
 
         // Filters for each attriute
+
         if(isset($_POST['gender'])){
             $gender = implode("','", $_POST['gender']);
             $sql .= "AND gender IN('".$gender."')";
@@ -38,8 +39,6 @@
             $sql .= "AND dept IN('".$dept."')";
         }
 
-        // print query
-        echo "$sql";
         $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
         $output = '';
 

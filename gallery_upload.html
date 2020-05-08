@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <link rel="stylesheet" href="./assets/css/gallery_upload.css">
+</head>
+<body>
+    <div class="upload">
+        <h1>Photo Uploader</h1>
+        <h2>Choose file and image title are mandatory fields</h2>
+    </div>
+    <div class="upload-form">
+        <form action="./assets/actions/gallery_post.php" id="upload-form" method="POST">
+            <input type="text" name="filetitle" placeholder="Image title..." class="form-control" required>
+            <br>
+            <input type="text" name="filedesc" placeholder="Image description..." class="form-control">
+            <br>
+            <input type="file" name="file", class="form-control" required>
+            <br>
+            <input type="submit" class="form-control submit" value="UPLOAD PHOTO">
+            <br>
+        </form>
+        <form action="./gallery.html">
+            <input type="submit" class="form-control submit" value="Back to Image Gallery">
+        </form>
+    </div>
+</body>
+</html>

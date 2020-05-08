@@ -1,350 +1,215 @@
 <?php
-    // Making a server connection
-    $server = "localhost";
-    $username = "root";
-    $password = "mysql@123";  // prakhar = mysql@123
-    $dbname = "sports-database";
-    $conn = mysqli_connect($server, $username, $password, $dbname);
+    include 'dbh.php';
 
-    if ($conn->connect_errno) {
-        die("Failed to connect to MySQL: " . $$conn->connect_error);
-    }
+    // Declare global teams array
+    $teams = array(
+        1=> "Panthers",
+        2=> "Bulls",
+        3=> "Phoenix",
+        4=> "Falcons",
+    );
+
+    // Get Sport Details
+    $page_id = $_GET['id'];
+    $sql = "SELECT * FROM sportDetails WHERE sID= '$page_id'";
+    $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    $row = $result->fetch_assoc();
+    $result->close();
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<html>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="playerscss.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <body>
+        <div class="container-fluid">
+        <!-- NAVBAR OF THE PAGE -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="https://snu.edu.in/"><img src="assets\images\snu_logo.jpg" class="img-fluid"
+                    alt="Responsive image"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-    <title>Player</title>
-  </head>
-  <body>
-    <h3 class="text-center text-light bg-info"> Displaying all players</h3>
-    <!-- NAVBAR AND HEADER --> 
-    <div class="col-lg-12">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="https://snu.edu.in/" style="width: max-content;"><img
-                src="assets\images\snu_logo.jpg" class="img-fluid" style="width: max-content;"
-                alt="Responsive image"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="https://snu.edu.in/events?cat=7">
-                        <h1> Events </h1><span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="https://snu.edu.in/events?cat=7">
-                        <h1> News </h1><span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link"
-                        href="https://snu.edu.in/campus-life/sports?qt-sports_section=2#qt-sports_section">
-                        <h1> Results </h1><span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link"
-                        href="https://snu.edu.in/campus-life/sports?qt-sports_section=3#qt-sports_section">
-                        <h1> SNUSL </h1><span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link"
-                        href="https://snu.edu.in/campus-life/sports?qt-sports_section=4#qt-sports_section">
-                        <h1> Staff </h1><span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link"
-                        href="https://snu.edu.in/campus-life/sports?qt-sports_section=5#qt-sports_section">
-                        <h1> Facility </h1><span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link"
-                        href="https://snu.edu.in/campus-life/sports?qt-sports_section=6#qt-sports_section">
-                        <h1> Calender </h1><span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <div class="dropdown" style="float:right; margin-right: 125px; margin-top: 20px; margin-left: 600px;">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Logged in as: <span class="glyphicon glyphicon-user">Prakhar</span>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="playerlogin.html">Logout</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://snu.edu.in/events?cat=7">
+                            <h1> Events </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://snu.edu.in/events?cat=7">
+                            <h1> News </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=2#qt-sports_section">
+                            <h1> Results </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=3#qt-sports_section">
+                            <h1> SNUSL </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=4#qt-sports_section">
+                            <h1> Staff </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=5#qt-sports_section">
+                            <h1> Facility </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=6#qt-sports_section">
+                            <h1> Calender </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <!--<li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    Dropdown
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            </li>
+                        </ul>-->
+                    <div class="dropdown" id="login1">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login: <span class="glyphicon glyphicon-user"></span>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="playerlogin.html">Player Login</a>
+                            <a class="dropdown-item" href="managerlogin.html">manager login</a>
+                            <a class="dropdown-item" href="guestlogin.html">guestlogin</a>
+                        </div>
+                        <!--<form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>-->
                     </div>
-                </div>
-            </ul>
-    </nav>
-</div>
-    <!--- Dislay of player starts --> 
+        </nav>
+        <!--- NAVBAR END --->
+       </div>
     <div class="container-fluid">
         <div class="row">
-            <h3>Basketball</h3>
-            <br>
-            <!-- Displaying all of our filters -->
-            <div class="col-lg-3">
-                <div class="col-lg-12">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col" colspan="2">Team</th>
-                                <th scope="col">Points</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <th colspan="2">Bulls</th>
-                                <th>100</th>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <th colspan="2">Panthers</th>
-                                <th>80</th>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <th colspan="2">Falcons</th>
-                                <th>70</th>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <th colspan="2">Phoenix</th>
-                                <th>60</th>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="col-md-1"></div>
+            <div class="cl-md-3">
+                <center>
+                    <img style=" border-radius: 5px; border: 1px solid black;" src="<?php echo $row['sport_logo'] ?>" width="400px" height="400px">
+                </center>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <br>
+                <br>
+                <br>
+                <div>
+                    <h2>Sport Name:</h2>
+                    <p style=" word-wrap: break-word;"><?php echo $row['sName'] ?></p>
                 </div>
-            <h5>Player Filters</h5>
-            <hr>
 
-            <!-- DISPLAYING TEAM OPTIONS -->
-            <h6 class="text-info">Select Team</h6>
-            <ul class="list-group">
-                <!-- Getting unique team value for our teams -->
-                <?php
-                    $team_sql = "SELECT teamName FROM teamDetails ORDER BY teamName LIMIT 4";
-                    $result = mysqli_query($conn, $team_sql) or die(mysqli_error($conn));
+                <div>
+                    <h2>Current Leader:</h2>
+                    <p style=" word-wrap: break-word;"><?php echo $teams[$row['currentLeader']] ?></p>
+                </div>
 
-                    // Display results in a while loop
-                    while($row=$result->fetch_assoc()){
-                ?>
-                <li class="list-group-item">
-                    <div class="form-check">
-                        <label for="" class="form-check-label">
-                            <input type="checkbox" class="form-check-input product_check" name="" value="<?= $row['teamName']; ?>" id="team"> <?= $row['teamName']; ?>
-                        </label>
-                    </div>
-                </li>
-            <?php } ?>
-            </ul>
-            <br>
+                <div>
+                    <h2>Top rated Player:</h2>
+                    <p style=" word-wrap: break-word;">
+                        <?php
+                            $rating_sql = "SELECT pname, MAX(rating) FROM playerDetails WHERE playerdetails.primarySportID = '$page_id'";
+                            $result = mysqli_query($conn, $rating_sql) or die(mysqli_error($conn));
+                            $rating_row = $result->fetch_assoc();
+                            echo $rating_row['pname'];
+                            $result->close();
+                        ?>
+                    </p>
+                </div>
 
-            <!-- DISPLAYING Gender options -->
-            <h6 class="text-info">Select Gender</h6>
-            <ul class="list-group">
-                <!-- Getting unique team value for our teams -->
-                <?php
-                    $gender_sql = "SELECT DISTINCT Gender FROM playerDetails ORDER BY Gender";
-                    $result=mysqli_query($conn, $gender_sql) or die(mysqli_error($conn));
-
-                    // Display results in a while loop
-                    while($row=$result->fetch_assoc()){
-                ?>
-                <li class="list-group-item">
-                    <div class="form-check">
-                        <label for="" class="form-check-label">
-                            <input type="checkbox" class="form-check-input product_check" name="" value="<?= $row['Gender']; ?>" id="gender"> <?= $row['Gender']; ?>
-                        </label>
-                    </div>
-                </li>
-            <?php } ?>
-            </ul>
-            <br>
-
-            <!-- DISPLAYING Sport OPTIONS -->
-            <h6 class="text-info">Select Sport</h6>
-            <ul class="list-group">
-                <!-- Getting unique team value for our teams -->
-                <?php
-                    $team_sql = "SELECT sName FROM sportDetails ORDER BY sName";
-                    $result=mysqli_query($conn, $team_sql) or die(mysqli_error($conn));
-
-                    // Display results in a while loop
-                    while($row=$result->fetch_assoc()){
-                ?>
-                <li class="list-group-item">
-                    <div class="form-check">
-                        <label for="" class="form-check-label">
-                            <input type="checkbox" class="form-check-input product_check" name="" value="<?= $row['sName']; ?>" id="sport"> <?= $row['sName']; ?>
-                        </label>
-                    </div>
-                </li>
-            <?php } ?>
-            </ul>
-            <br>
-
-            <!-- DISPLAYING Department OPTIONS -->
-            <h6 class="text-info">Select Depatment</h6>
-            <ul class="list-group">
-                <!-- Getting unique team value for our teams -->
-                <?php
-                    $team_sql = "SELECT dept FROM academic ORDER BY dept";
-                    $result=mysqli_query($conn, $team_sql) or die(mysqli_error($conn));
-
-                    // Display results in a while loop
-                    while($row=$result->fetch_assoc()){
-                ?>
-                <li class="list-group-item">
-                    <div class="form-check">
-                        <label for="" class="form-check-label">
-                            <input type="checkbox" class="form-check-input product_check" name="" value="<?= $row['dept']; ?>" id="dept"> <?= $row['dept']; ?>
-                        </label>
-                    </div>
-                </li>
-            <?php } ?>
-            </ul>
-            <br>
-
-            <!-- DISPLAYING Level OPTIONS -->
-            <h6 class="text-info">Select Level of Study</h6>
-            <ul class="list-group">
-                <!-- Getting unique team value for our teams -->
-                <?php
-                    $team_sql = "SELECT DISTINCT level FROM academic ORDER BY level";
-                    $result=mysqli_query($conn, $team_sql) or die(mysqli_error($conn));
-
-                    // Display results in a while loop
-                    while($row=$result->fetch_assoc()){
-                ?>
-                <li class="list-group-item">
-                    <div class="form-check">
-                        <label for="" class="form-check-label">
-                            <input type="checkbox" class="form-check-input product_check" name="" value="<?= $row['level']; ?>" id="level"> <?= $row['level']; ?>
-                        </label>
-                    </div>
-                </li>
-            <?php } ?>
-            </ul>
-
+            </div>
+            <!-- <div class="col-md-4">
+                <br>
+                <br>
+            </div> -->
         </div>
+    </div>
+    <br>
+    <br>
+    <hr>
+    <div class="container-fluid">
+    <div class="col-lg-2 col-sm-12">
 
-            <!---- DISPLAYING PLAYERS  -->
-            <div class="col-lg-9">
-                <h5 class="text-center" id="textChange">All Players</h5>
-                <hr>
+    </div>
+    <div class="col-lg-8 col-xs-12 col-sm-12">
+        <div class="Quote" style="margin-left: 125px; clear: both;">
+            <br>
+            <h1>Upcoming Matches:</h1>
+            <br>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th scope="row" style="font-size: 25px">Match-up</th>
+                        <th scope="row" style="font-size: 25px">Date</th>
+                        <th scope="row" style="font-size: 25px">Venue</th>
+                    </tr>
+                        <!--- Print rows in a while loop -->
+                        <?php
+                            $sql = "SELECT events.teamA, events.teamB, events.Date, sportDetails.venue from events,sportDetails WHERE events.sport = sportDetails.sID AND sport = '$page_id'";
+                            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                            while($row = $result->fetch_assoc()){
+                        ?>
+                    <tr>
+                        <td style="font-size: 20px;"><?= $row['teamA'] ?> vs <?= $row['teamB'] ?></td>
+                        <td style="font-size: 25px;"><?= $row['Date'] ?></td>
+                        <td style="font-size: 20px;"><?= $row['venue'] ?></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    <br>
+    <br>
 
-                <!-- Made a loader and displayed it through AJAX  -->
-                <div class="text-center">
-                    <img src="assets/images/loader.gif" id="loader" alt="" width="200" style="display:none;">
-                </div>
-                <div class="row" id="result">
-                    <?php
-                        $sql = "SELECT p.pid, p.pname, p.Department, p.picture, t.teamName FROM playerDetails as p, teamDetails as t WHERE t.tid = p.teamID";
-                        $result=mysqli_query($conn, $sql) or die(mysqli_error($conn));
-                        while($row = $result->fetch_assoc()){
-                    ?>
-                    <div class="col-md-3 mb-2">
-                        <div class="card-deck">
-                            <a href="player.php?id=<?php echo $row['pid'] ?>">
-                            <div class="card border-secondary">
-                                <img src="<?= $row['picture']; ?>" class="card-img-top">
-                                <div class="card-img-overlay">
-                                    <h6 style="margin-top:175px;" class="text-light bg-info text-center rounded p-1"><?= $row['pname']; ?></h6>
-                                </div>
-                                <!-- Body of the content  -->
-                                <div class="card-body">
-                                    <h4 class="card-title text-danger text-center"><?= $row['teamName']; ?></h4>
-                                    <p class="text-center">
-                                        <?= $row['Department']; ?> <br>
-                                    </p>
-                                    <!-- <a href='player.php?id=".$row['pid']."' class="btn btn-success btn-block active"> Player Details </a> -->
-                                    <!-- <a href="index1.html" class="btn btn-primary">Go somewhere</a> -->
-                                </div> <!--- End card body--->
-                            </div>
-                        </a>
-                        </div>
+    <!-- Footer -->
+    <div class="col-lg-12">
+    <footer class="main-block dark-bg" style="background: black; padding: 90px;">
+        <div class="container">
+            <div class="row" style="flex-wrap: wrap; display: flex;">
+                <div class="col-lg-12" style="align-self: center;">
+                    <div class="copyright" style="text-align: center;">
+                        <p style="color: #ccc;">Copyright © 2020 SNU Sports. All rights reserved</p>
                     </div>
-                <?php } ?>
                 </div>
             </div>
         </div>
+    </footer>
     </div>
-
-
-    <!--- FOOTER ---> 
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <!-- Adding Style code  -->
-    <style media="screen">
-    .card-img-top {
-        width: 100%;
-        height: 15vw;
-        object-fit: cover;
-    }
-    </style>
-
-    <!-- Writing the AJAX Code -->
-    <script type="text/javascript">
-        $(document).ready(function(){
-
-            // Targetting the check box activity
-            $(".product_check").click(function(){
-                // First show a loader
-                $("#loader").show();
-
-                var action = 'data';
-                // Fill the IDs that have been assigned in the input field
-                var team = get_filter_text('team');
-                var gender = get_filter_text('gender');
-                var sport = get_filter_text('sport');
-                var dept = get_filter_text('dept');
-                var level = get_filter_text('level');
-
-                // php page to handle the queries
-                $.ajax({
-                    url: 'action.php',
-                    method: 'POST',
-                    data: {action: action, team: team, gender: gender, sport: sport, dept: dept, level: level},
-                    success: function(response){
-                        // Changes that will take place once the query returns successfully.
-                        $("#result").html(response);
-                        $('#loader').hide() // Hide the loader
-                        $('#textChange').text("Filtered Products")
-                    }
-                });
-            });
-
-            function get_filter_text(text_id){
-                var filterData = [];
-                $('#' + text_id + ':checked').each(function(){
-                    filterData.push($(this).val());
-                });
-                console.log(filterData);
-                return filterData;
-            }
-        });
-    </script>
-  </body>
+    </body>
 </html>
