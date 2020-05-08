@@ -70,7 +70,7 @@
         $quote = $_POST['quote'];
 
         if($match_num > 0 && $win_num > 0){
-        $rating = (($win_num * 100)/$match_num);
+            $rating = (($win_num * 100)/$match_num);
         }
 
         // Testing the inputs
@@ -90,7 +90,6 @@
         echo "$rating" . "<br>";
 
         $sql = "INSERT INTO playerDetails(pname, Gender, playedMatches, wins, picture, primarysportID, secondarySportID, rating, teamID, managerID, lastBid, Department, YearofJoining, LevelofStudy, YearofPassing, quote) VALUES('$name', '$gender', $match_num, $win_num, '$fileDest', $p_sport, $s_sport, $rating, $team, $manager, $bid, '$dept', $join_year,  '$level', $pass_year, '$quote')";
-        echo "$sql";
 
         // Perform a query, check for error
         mysqli_query($conn, $sql) or die(mysqli_error($conn));
