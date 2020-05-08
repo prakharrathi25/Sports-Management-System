@@ -41,6 +41,7 @@ p {
 .heading {
     color: aqua;
     margin-left: 125px;
+    margin-top: -450px;
     margin-right: auto;
     font: bolder;
 }

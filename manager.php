@@ -107,10 +107,11 @@
                                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                                 </li>
                             </ul>-->
+                
                 <div class="dropdown" style="float:right; margin-right: 125px; margin-top: 20px; margin-left: 600px;">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Logged in as: <span class="glyphicon glyphicon-user">Prakhar</span>
+                        Logged in as: <span>Prakhar</span>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="playerlogin.html">Logout</a>
