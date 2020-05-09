@@ -1,5 +1,15 @@
 <?php
-    include 'dbh.php';
+    // Making a database connection
+    $server = "localhost";
+    $username = "root";
+    $password = "mysql@123";
+    $dbname = "sports-database";
+    $conn = mysqli_connect($server, $username, $password, $dbname);
+
+    if ($conn->connect_errno) {
+        die("Failed to connect to MySQL: " . $conn->connect_error);
+    }
+
     // Output to be displayed
     $output = '';
 
@@ -14,6 +24,13 @@
 
         // Fetch data from the filtered table
         $s_sql = "SELECT pid, picture, pname, dept, team FROM filter WHERE pname LIKE CONCAT('%','".$search."', '%')";
+
+        // Additional search details like teams
+        if(isset($_POST['team'])){
+            $team = $_POST['team'];
+            $s_sql .= "AND team ='".$team."' ";
+        }
+
         // Send Query request
         $result = mysqli_query($conn, $s_sql) or die(mysqli_error($conn));
 
