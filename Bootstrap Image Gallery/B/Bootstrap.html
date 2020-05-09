@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery Design</title>
+    <link rel="stylesheet" href="./Bootstrap.css">
+    <link rel="stylesheet" href="./lightbox.min.css">
+    <script src="./lightbox-plus-jquery.min.js"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Space......</a></li>
+        </ul>
+    </nav>
+    <div class="heading">
+        <h1>News Feed</h1>
+        <h2>Hover for Flip and Click for More</h2>
+    </div>
+
+<div class="container">
+    <div class="parent">
+        <div class="child">
+    <div class="gallery">
+    <a href="../News/news1.txt" data-lightbox="mygallery"><img src="../images/ISC_banner.jpg"></a>
+    </div>
+    <a href="../News/news1.txt" data-lightbox="mygallery"><div class="News">Your news will be visible over here</div></a>
+        </div>
+    </div>
+    <div class="parent">
+        <div class="child">
+    <div class="gallery">
+    <a href="../images/ISC_banner.jpg" data-lightbox="mygallery"><img src="../images/ISC_banner.jpg"></a>
+    </div>
+    <a href="../images/ISC_banner.jpg" data-lightbox="mygallery"><div class="News">Your news will be visible over here</div></a>
+        </div>
+    </div>
+    <div class="parent">
+        <div class="child">
+    <div class="gallery">
+    <a href="../images/ISC_banner.jpg" data-lightbox="mygallery"><img src="../images/ISC_banner.jpg"></a>
+    </div>
+    <a href="../images/ISC_banner.jpg" data-lightbox="mygallery"><div class="News">Your news will be visible over here</div></a>
+        </div>
+    </div>
+    <div class="parent">
+        <div class="child">
+    <div class="gallery">
+    <a href="../images/ISC_banner.jpg" data-lightbox="mygallery"><img src="../images/ISC_banner.jpg"></a>
+    </div>
+    <a href="../images/ISC_banner.jpg" data-lightbox="mygallery"><div class="News">Your news will be visible over here</div></a>
+        </div>
+    </div>
+</div>
+<div class="gallery-upload">
+    <form action="./Bootstrap_Upload.html">
+        <input type="submit" class="form-control submit" value="Upload Photo">
+    </form>
+</div>
+</body>
+</html>
