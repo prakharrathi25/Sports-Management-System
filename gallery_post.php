@@ -1,8 +1,8 @@
 <?php
-
+    echo "Here";
     // Check if the button was pressed
-    if (isset($POST['picture-submit'])) {
-        echo "Entered"; 
+    if (isset($_POST['picture-submit'])) {
+        echo "Entered";
         // Get the inputs
         $newfilename =  'gallery';
         $title = $_POST['title'];
@@ -14,7 +14,6 @@
         }else{
             echo "No File";
         }
-        console.log($file);
 
         // Obtaining some file information
         $fileName = $file['name'];
@@ -31,13 +30,13 @@
         $allowed = array('jpeg', 'jpg', 'png', 'JPG');
 
         // if extension is allowed in_array($fileActualExt, $allowed)
-        if(1==1){
+        if(in_array($fileActualExt, $allowed)){
             // check if any error
             if($fileError === 0){
                     // Creating a unique file name
                     $fileNew = $newfilename. "." . uniqid('', true) . "." . $fileActualExt;
                     $fileDest = "assets/images/gallery/" . $fileNew;
-
+                    $newfileDestName = "assets/images/gallery/" . $fileNew;
                     // Function to upload file
                     move_uploaded_file($fileTmpName, $fileDest);
 
@@ -51,21 +50,16 @@
                     if ($conn->connect_errno) {
                         die("Failed to connect to MySQL: " . $conn->connect_error);
                     }
-                    $stmt = mysqli_stmt_init($conn);
 
                     // Move to the database as well using prepared statements
-                    $sql = "INSERT into gallery(location, title, description) VALUES(?, ?, ?)";
+                    $sql = "INSERT into gallery(location, title, description) VALUES('$newfileDestName', '$title', '$description')";
                     echo $sql;
-
-                    // Binding parameters
-                    mysqli_stmt_bind_param($stmt, "sss", $fileDest, $title, $description);
-                    mysqli_stmt_execute("$stmt");
 
                     // Perform a query, check for error
                     mysqli_query($conn, $sql) or die(mysqli_error($conn));
                     echo "Query Sent";
 
-                    header("Location: ../gallery.php?upload=sucess");
+                    header("Location: gallery.php?upload=sucess");
 
             }else {
                 echo "There was an error in file upload.";

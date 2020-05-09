@@ -5,7 +5,7 @@ body{
     margin: 0;
     padding: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(..assets/images/roger_federer-2560x1440.jpg);
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(assets/images/roger_federer-2560x1440.jpg);
     background-size: cover;
     font-family: sans-serif;
 }

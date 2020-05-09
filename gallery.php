@@ -9,15 +9,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Gallery Design</title>
-    <link rel="stylesheet" href="./assets/css/gallery.css">
-    <link rel="stylesheet" href="./assets/css/lightbox.min.css">
+    <link rel="stylesheet" href="assets/css/gallery.css">
+    <link rel="stylesheet" href="assets/css/lightbox.min.css">
     <script src="./assets/js/lightbox-plus-jquery.min.js"></script>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Space......</a></li>
+            <!-- NAVBAR SPACE --> 
         </ul>
     </nav>
 
@@ -47,6 +46,15 @@
     }
 
 ?>
-
+<style media="screen">
+body{
+    margin: 0;
+    padding: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(assets/images/roger_federer-2560x1440.jpg);
+    background-size: cover;
+    font-family: sans-serif;
+}
+</style>
 </body>
 </html>

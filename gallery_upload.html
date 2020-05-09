@@ -12,7 +12,7 @@
         <h2>Choose file and image title are mandatory fields</h2>
     </div>
     <div class="upload-form">
-        <form action="./assets/actions/gallery_post.php" id="upload-form" method="POST">
+        <form action="gallery_post.php" id="upload-form" method="POST" enctype="multipart/form-data">
             <input type="text" name="title" placeholder="Image title..." class="form-control" required>
             <br>
             <input type="text" name="description" placeholder="Image description..." class="form-control">
