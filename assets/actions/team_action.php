@@ -39,7 +39,6 @@
         }
 
         // print query
-        echo "$sql";
         $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
         $output = '';
 

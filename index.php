@@ -1,3 +1,6 @@
+<?php
+    include 'dbh.php';
+?>
 <!DOCTYPE html>
 <html>
 
@@ -18,6 +21,7 @@
 
 <body>
 <div class="col-lg-12">
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="https://snu.edu.in/" style="width: max-content;"><img
                 src="assets\images\snu_logo.jpg" class="img-fluid" style="width: max-content;"
@@ -29,6 +33,11 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php">
+                        <h1> Home </h1><span class="sr-only">(current)</span>
+                    </a>
+                </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="allevents.php">
                         <h1> Events </h1><span class="sr-only">(current)</span>
@@ -121,10 +130,10 @@
                             <img src="assets/images/img1.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item" data-interval="2000">
-                            <img src="..." class="d-block w-100" alt="...">
+                            <img src="assets/images/ISC_banner.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="..." class="d-block w-100" alt="...">
+                            <img src="assets/images/football.png" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
@@ -142,26 +151,18 @@
             <thead>
             </thead>
             <tbody>
+                <?php
+                    $sql = "SELECT * from teamDetails";
+                    $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                    while($row = $result->fetch_assoc()){
+                ?>
                 <tr>
-                    <th scope="row">1</th>
-                    <td colspan="2">Team Bulls</td>
-                    <td>100</td>
+                    <th scope="row"><?= $row['tid'] ?></th>
+                    <td colspan="2"><?= $row['teamName'] ?></td>
+                    <td><?= $row['points'] ?></td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td colspan="2"> Team Panthers</td>
-                    <td>80</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Team Falcons</td>
-                    <td>70</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th>
-                    <td colspan="2">Team Phoenix</td>
-                    <td>60</td>
-                </tr>
+            <?php } ?>
+
             </tbody>
         </table>
     </div>
@@ -178,7 +179,7 @@
             <div class="col-lg-10">
                 <h1 class="teams">MEET the teams of SNU: </h1>
             </div>
-        </div>      
+        </div>
     </div>
 
     <div class="col-lg-12">
@@ -186,46 +187,17 @@
     </div>
     <div class="col-lg-8">
         <div class="container-fuild flexing" style="width: auto;">
-            <a href="bulls.html"><img src="assets/images/bulls_logo.jpeg" class="img"></a>
-            <a href="panthers.html"><img src="assets/images/panthers_logo.jpeg" class="img">
-            </a>
-            <a href="falcons.html"><img src="assets/images/falcons_logo.jpg" class="img">
-            </a>
-            <a href="phoenix.html"><img src="assets/images/phoenix_logo.jpeg" class="img">
-            </a>
+            <a href="team_page.php?id=2"><img src="assets/images/bulls_logo.jpeg" class="img"></a>
+            <a href="team_page.php?id=1"><img src="assets/images/panthers_logo.jpeg" class="img"></a>
+            <a href="team_page.php?id=4"><img src="assets/images/falcons_logo.jpg" class="img"></a>
+            <a href="team_page.php?id=3"><img src="assets/images/phoenix_logo.jpeg" class="img"></a>
         </div>
     </div>
     <div class="col-lg-2">
     </div>
     </div>
-    <div class="col-lg-12">
-        
-        <div class="col-lg-2">
-    </div>
-    <div class="col-lg-10">
-        <p>Meet the players of SNU</p>
-    </div>
-    <br>
-    </div>
-    <div class="col-lg-12">
-        <div class="row">
-        <div class="col-lg-2">
-        </div>
-    <div class="col-lg-8">
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" style="font-size: 40px;">
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                <a href="badminton.html"><button type="button" class="btn btn-secondary btn1"
-                        style="width: 400px; height:100px;">Badminton</button></a>
-                <a href="badminton.html"><button type="button" class="btn btn-secondary btn1"
-                        style="width: 400px; height:100px;">Basketball</button></a>
-                <a href="badminton.html"><button type="button" class="btn btn-secondary btn1"
-                        style="width: 400px; height:100px;">Cricket</button></a>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-2"></div>
-    </div>
-    </div>
+
+
     <br>
     <br>
     <br>

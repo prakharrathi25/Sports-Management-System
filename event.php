@@ -46,7 +46,7 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -236,9 +236,11 @@
     </div> <!-- Whole Container -->
 
     <!--- Diplay Similar Events --->
+
     <div class="container-fluid">
         <div class="row text-center">
             <div class="col-lg-12">
+                <br> 
                 <h3 class="text-center"> Find Similar Events</h3>
             </div>
             <br>
