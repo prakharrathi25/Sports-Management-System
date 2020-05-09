@@ -5,7 +5,7 @@ body{
     margin: 0;
     padding: center;
     text-align: center;
-    background:  url(../photo-1521846562476-9c2446539e47.jpg);
+    background: linear-gradient(rgba(0,0,50,0.5), rgba(0,0,50,0.5)), url(../images/roger_federer-2560x1440.jpg);
     background-size: cover;
     font-family: sans-serif;
 }
@@ -40,7 +40,7 @@ nav a:hover{
 .heading
 {
     margin-top: 100;
-    color: #fff;
+    color: white;
     text-transform: uppercase;
     transition: all 4s ease-in-out;
     padding: 20px;
