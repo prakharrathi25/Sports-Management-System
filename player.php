@@ -16,6 +16,7 @@
         crossorigin="anonymous"></script>
     <body>
     <div class="col-lg-12">
+        <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="https://snu.edu.in/" style="width: max-content;"><img
                     src="assets\images\snu_logo.jpg" class="img-fluid" style="width: max-content;"
@@ -28,57 +29,63 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="https://snu.edu.in/events?cat=7">
+                        <a class="nav-link" href="index.php">
+                            <h1> Home </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="allevents.php">
                             <h1> Events </h1><span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="https://snu.edu.in/events?cat=7">
+                        <a class="nav-link" href="NewsWall\B\Bootstrap.html">
                             <h1> News </h1><span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link"
-                            href="https://snu.edu.in/campus-life/sports?qt-sports_section=2#qt-sports_section">
-                            <h1> Results </h1><span class="sr-only">(current)</span>
+                        <a class="nav-link" href="all_players.php">
+                            <h1> Players </h1><span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link"
-                            href="https://snu.edu.in/campus-life/sports?qt-sports_section=3#qt-sports_section">
+                        <a class="nav-link" href="about.html">
                             <h1> SNUSL </h1><span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link"
-                            href="https://snu.edu.in/campus-life/sports?qt-sports_section=4#qt-sports_section">
-                            <h1> Staff </h1><span class="sr-only">(current)</span>
+                        <a class="nav-link" href="gallery.php">
+                            <h1> Gallery </h1><span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link"
-                            href="https://snu.edu.in/campus-life/sports?qt-sports_section=5#qt-sports_section">
-                            <h1> Facility </h1><span class="sr-only">(current)</span>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="project.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <h1>teams</h1><span class="sr-only">(current)</span>
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="team_page.php?id=1">Panthers</a>
+                        <a class="dropdown-item" href="team_page.php?id=2">Bulls</a>
+                        <a class="dropdown-item" href="team_page.php?id=3">Phoenix</a>
+                        <a class="dropdown-item" href="team_page.php?id=4">Bulls</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link"
-                            href="https://snu.edu.in/campus-life/sports?qt-sports_section=6#qt-sports_section">
-                            <h1> Calender </h1><span class="sr-only">(current)</span>
+                        <a class="nav-link" href="calendar\calendar.php">
+                            <h1> Calendar </h1><span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <div class="dropdown" style="float:right; margin-right: 125px; margin-top: 20px; margin-left: 600px;">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Logged in as: <span class="glyphicon glyphicon-user">Prakhar</span>
+                            Login:<span class="glyphicon glyphicon-user"></span>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="playerlogin.html">Logout</a>
+                            <a class="dropdown-item" href="login.php">player/Manager Login</a>
                         </div>
                     </div>
                 </ul>
+            </div>      
         </nav>
-    </div>
+
         <!--- NAVBAR END --->
 
         <!-- PLAYER PAGE START -->

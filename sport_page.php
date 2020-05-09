@@ -36,8 +36,10 @@
     <body>
         <div class="container-fluid">
         <!-- NAVBAR OF THE PAGE -->
+        <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="https://snu.edu.in/"><img src="assets/images/snu_logo.jpg" class="img-fluid"
+            <a class="navbar-brand" href="https://snu.edu.in/" style="width: max-content;"><img
+                    src="assets\images\snu_logo.jpg" class="img-fluid" style="width: max-content;"
                     alt="Responsive image"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,72 +49,62 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="https://snu.edu.in/events?cat=7">
+                        <a class="nav-link" href="index.php">
+                            <h1> Home </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="allevents.php">
                             <h1> Events </h1><span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="https://snu.edu.in/events?cat=7">
+                        <a class="nav-link" href="NewsWall\B\Bootstrap.html">
                             <h1> News </h1><span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=2#qt-sports_section">
-                            <h1> Results </h1><span class="sr-only">(current)</span>
+                        <a class="nav-link" href="all_players.php">
+                            <h1> Players </h1><span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=3#qt-sports_section">
+                        <a class="nav-link" href="about.html">
                             <h1> SNUSL </h1><span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=4#qt-sports_section">
-                            <h1> Staff </h1><span class="sr-only">(current)</span>
+                        <a class="nav-link" href="gallery.php">
+                            <h1> Gallery </h1><span class="sr-only">(current)</span>
                         </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="project.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <h1>teams</h1><span class="sr-only">(current)</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="team_page.php?id=1">Panthers</a>
+                        <a class="dropdown-item" href="team_page.php?id=2">Bulls</a>
+                        <a class="dropdown-item" href="team_page.php?id=3">Phoenix</a>
+                        <a class="dropdown-item" href="team_page.php?id=4">Bulls</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=5#qt-sports_section">
-                            <h1> Facility </h1><span class="sr-only">(current)</span>
+                        <a class="nav-link" href="calendar\calendar.php">
+                            <h1> Calendar </h1><span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=6#qt-sports_section">
-                            <h1> Calender </h1><span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <!--<li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    Dropdown
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                            </li>
-                        </ul>-->
-                    <div class="dropdown" id="login1">
+                    <div class="dropdown" style="float:right; margin-right: 125px; margin-top: 20px; margin-left: 600px;">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Login: <span class="glyphicon glyphicon-user"></span>
+                            Login:<span class="glyphicon glyphicon-user"></span>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="playerlogin.html">Player Login</a>
-                            <a class="dropdown-item" href="managerlogin.html">manager login</a>
-                            <a class="dropdown-item" href="guestlogin.html">guestlogin</a>
+                            <a class="dropdown-item" href="login.php">player/Manager Login</a>
                         </div>
-                        <!--<form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>-->
                     </div>
+                </ul>
         </nav>
+    </div>  
         <!--- NAVBAR END --->
        </div>
     <div class="container-fluid">
