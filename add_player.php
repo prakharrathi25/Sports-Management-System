@@ -53,7 +53,7 @@
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="\NewsWall\B\Bootstrap.html">
+              <a class="nav-link" href="NewsWall\B\Bootstrap.html">
                 <h1> News </h1><span class="sr-only">(current)</span>
               </a>
             </li>
