@@ -1,0 +1,81 @@
+.none{ display:none;}
+.dropdown{color: #444444;font-size:17px;}
+#calender_section{ width:700px; margin:30px auto 0;}
+#calender_section h2{ background-color:#efefef; color:#444444; font-size:17px; text-align:center; line-height:40px;}
+#calender_section h2 a{ color:#F58220; float:none;}
+#calender_section_top{ width:100%; float:left; margin-top:20px;}
+#calender_section_top ul{padding:0; list-style-type:none;}
+#calender_section_top ul li{ float:left; display:block; width:99px; border-right:1px solid #fff;  text-align:center; font-size:14px; min-height:0; background:none; box-shadow:none; margin:0; padding:0;}
+#calender_section_bot{ width:100%; margin-top:20px; float:left; border-left:1px solid #ccc; border-bottom:1px solid #ccc;}
+#calender_section_bot ul{ margin:0; padding:0; list-style-type:none;}
+#calender_section_bot ul li{ float:left; width:99px; height:80px; text-align:center; border-top:1px solid #ccc; border-right:1px solid #ccc; min-height:0; background:none; box-shadow:none; margin:0; padding:0; position:relative;}
+#calender_section_bot ul li span{ margin-top:7px; float:left; margin-left:7px; text-align:center;}
+
+.grey{ background-color:#DDDDDD !important;}
+.light_sky{ background-color:#B9FFFF !important;}
+
+/*========== Hover Popup ===============*/
+.date_cell { cursor: pointer; cursor: hand; }
+.date_cell:hover { background: #DDDDDD !important; }
+.date_popup_wrap {
+	position: absolute;
+	width: 143px;
+	height: 115px;
+	z-index: 9999;
+	top: -115px;
+	left:-55px;
+	background: transparent url(add-new-event.png) no-repeat top left;
+	color: #666 !important;
+}
+.events_window {
+	overflow: hidden;
+	overflow-y: auto;
+	width: 133px;
+	height: 115px;
+	margin-top: 28px;
+	margin-left: 25px;
+}
+.event_wrap {
+	margin-bottom: 10px; padding-bottom: 10px;
+	border-bottom: solid 1px #E4E4E7;
+	font-size: 12px;
+	padding: 3px;
+}
+.date_window {
+	margin-top:20px;
+	margin-bottom: 2px;
+	padding: 5px;
+	font-size: 16px;
+	margin-left:9px;
+	margin-right:14px
+}
+.popup_event {
+	margin-bottom: 2px;
+	padding: 2px;
+	font-size: 16px;
+	width:100%;
+}
+.popup_event a {color: #000000 !important;}
+.packeg_box a {color: #F58220;float: right;}
+a:hover {color: #181919;text-decoration: underline;}
+
+@media only screen and (min-width:480px) and (max-width:767px) {
+#calender_section{ width:336px;}
+#calender_section_top ul li{ width:47px;}
+#calender_section_bot ul li{ width:47px;}
+}
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+#calender_section{ width:219px;}
+#calender_section_top ul li{ width:30px; font-size:11px;}
+#calender_section_bot ul li{ width:30px;}
+#calender_section_bot{ width:217px;}
+#calender_section_bot ul li{ height:50px;}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+#calender_section{ width:530px;}
+#calender_section_top ul li{ width:74px;}
+#calender_section_bot ul li{ width:74px;}
+#calender_section_bot{ width:525px;}
+#calender_section_bot ul li{ height:50px;}
+}
