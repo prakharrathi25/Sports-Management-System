@@ -5,7 +5,7 @@ body{
     margin: 0;
     padding: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,50,0.5), rgba(0,0,50,0.5)), url(../images/kobe_bryant_american_basketball_player_4k-3840x2160.jpg);
+    background:  url(../photo-1521846562476-9c2446539e47.jpg);
     background-size: cover;
     font-family: sans-serif;
 }
@@ -73,7 +73,7 @@ nav a:hover{
 
 .gallery img{
     width: 100%;
-    height: auto;
+    height: 100%;
     transition: 1s;
 }
 .desc{
