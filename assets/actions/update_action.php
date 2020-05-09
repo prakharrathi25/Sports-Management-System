@@ -26,8 +26,11 @@
       echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
     }
 
+    // Field val array
+    $fields = array("bogus", "pname", "Department", "Gender", "lastBid", "YearofPassing", "quote", "highlight", "playedMatches", "wins");
+
 ?>
-<div class="col-lg-12">
+<!-- <div class="col-lg-12">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="https://snu.edu.in/" style="width: max-content;"><img src="assets\images\snu_logo.jpg" class="img-fluid" style="width: max-content;"
         alt="Responsive image"></a>
@@ -75,99 +78,50 @@
         </li>
       </ul>
   </nav>
-</div>
-<h1> Registration Confirmation </h1>
+</div> -->
+
 
 <?php
+
+    // Get player details
+    $page_id = $_GET['id'];
+
     // Check if the submit button was pressed
-    if (isset($_POST['submit-button'])){
-        // Dealing with image data
-        $file = $_FILES['plr_img'];
+    if (isset($_POST['update'])){
 
-        // Obtaining some file information
-        $fileName = $_FILES['plr_img']['name'];
-        $fileTmpName = $_FILES['plr_img']['tmp_name'];
-        $fileSize = $_FILES['plr_img']['size'];
-        $fileError = $_FILES['plr_img']['error'];
-        $fileType = $_FILES['plr_img']['type'];
+        $fieldVal = (int)$_POST['update-field'];
+        $old = $_POST['old'];
+        $new = $_POST['new'];
+        $field = $fields[$fieldVal];
 
-        // Checking file extensions
-        $fileExt = explode('.', $fileName);
-        $fileActualExt = strtolower(end($fileExt));
+        // Check old value first
+        $sql = "SELECT ".$field." from playerDetails WHERE pid = $page_id";
+        $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+        $row = $result->fetch_assoc();
 
-        // Allowed extensions
-        $allowed = array('jpeg', 'jpg', 'png');
-
-        // if extension is allowed
-        if (in_array($fileActualExt, $allowed)){
-            // check if any error
-            if($fileError === 0){
-                    // Creating a unique file name
-                    $fileNew = uniqid('', true).".".$fileActualExt;
-                    $fileDest = 'assets/uploads/'.$fileNew;
-
-                    // Function to upload file
-                    move_uploaded_file($fileTmpName, $fileDest);
-            }else {
-                echo "There was an error in file upload.";
-            }
-        }else {
-            echo "You cannnot upload files of this type!";
+        if($row[$field] == $old)
+        {
+            echo "<h1> UPDATE SUCCESSFUL </h1>";
+            $sql = "UPDATE playerDetails SET ".$field." = '".$new."' WHERE pid = $page_id";
+            echo $sql;
+            //Perform a query, check for error
+            mysqli_query($conn, $sql) or die(mysqli_error($conn));
+        }else{
+            echo "<h1> Values don't match </h1>";
         }
 
-        // Declare other input variables
-        $name = (string)$_POST['name'];
-        $gender = (string)$_POST['gender'];
-        $match_num = (int)$_POST['match_num'];
-        $win_num = (int)$_POST['win_num'];
-        $p_sport = (int)$_POST['p_sport'];
-        $s_sport = (int)$_POST['s_sport'];
-        $team = (int)$_POST['team'];
-        $manager = (int)$_POST['team'];
-        $bid = (int)$_POST['bid'];
-        $dept = (string)$_POST['dept'];
-        $join_year = (int)$_POST['join_year'];
-        $level = $_POST['level'];
-        $pass_year = (int)$_POST['pass_year'];
-        $quote = $_POST['quote'];
-        $high = $_POST['highlight'];
-        $captain = (int)$_POST['captain'];
-
-        if($match_num > 0 && $win_num > 0){
-            $rating = (($win_num * 100)/$match_num);
-        }
-
-        // Testing the inputs
-        echo "$fileDest" . "<br>";
-        echo "$name" . "<br>";
-        echo "$gender" . "<br>";
-        echo "$match_num". "<br>";
-        echo "$win_num" . "<br>";
-        echo "$p_sport" . "<br>";
-        echo "$s_sport" . "<br>";
-        echo "$team" . "<br>";
-        echo "$dept" . "<br>";
-        echo "$join_year" . "<br>";
-        echo "$level" . "<br>";
-        echo "$pass_year" . "<br>";
-        echo "$quote" . "<br>";
-        echo "$rating" . "<br>";
-
-        $sql = "INSERT INTO playerDetails(pname, Gender, playedMatches, wins, picture, primarysportID, secondarySportID, rating, teamID, managerID, lastBid, Department, YearofJoining, LevelofStudy, YearofPassing, quote, isCaptain, highlight) VALUES('$name', '$gender', $match_num, $win_num, '$fileDest', $p_sport, $s_sport, $rating, $team, $manager, $bid, '$dept', $join_year,  '$level', $pass_year, '$quote', $captain, '$high')";
-
-        // Perform a query, check for error
-        mysqli_query($conn, $sql) or die(mysqli_error($conn));
     }
 ?>
 
+
 <div class="jumbotron text-xs-center">
   <h1 class="display-3">Thank You!</h1>
-  <p class="lead"><strong>Your entry has been stored!</strong></p>
+  <p class="lead"><strong>Your entry has been updated!</strong></p>
   <hr>
   <p>
-    View Players? <a href="all_players.php">Add More</a>
+    View Players? <a href="./../all_players.php">View Players</a>
   </p>
   <p class="lead">
-    <a class="btn btn-primary btn-sm" href="index.php" role="button">Continue to homepage</a>
+    <a class="btn btn-primary btn-sm" href="../../player_update.php?id=<?php echo $page_id ?>" role="button">Go back</a>
   </p>
 </div>

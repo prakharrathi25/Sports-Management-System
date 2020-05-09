@@ -1,6 +1,5 @@
 <?php
-
-    // Making a server connection
+    // Making a database connection
     $server = "localhost";
     $username = "root";
     $password = "mysql@123";
@@ -11,35 +10,29 @@
         die("Failed to connect to MySQL: " . $conn->connect_error);
     }
 
-    if(isset($_POST['action'])){
+    // Output to be displayed
+    $output = '';
 
-        // First create a new filtered table
-        $sql_create = "CREATE TABLE filter as (SELECT p.pid, p.picture, p.pname, p.gender as gender, p.Department as dept, s.sName as sport, t.teamName as team FROM playerDetails as p, teamDetails as t, sportDetails as s WHERE p.teamID = t.tId AND s.sID = p.primarysportID)";
+    if(isset($_POST['query'])){
+
+        // Create a new filtered table
+        $sql_create = "CREATE TABLE filter as (SELECT p.pid, p.picture, p.pname, p.Department as dept, t.teamName as team FROM playerDetails as p, teamDetails as t WHERE p.teamID = t.tID)";
 
         mysqli_query($conn, $sql_create) or die(mysqli_error($conn));
-        $team = $_POST['team'];
+
+        $search = $_POST['query']; // Search query is stored
 
         // Fetch data from the filtered table
-        $sql = "SELECT pid, picture, pname, gender, dept, sport, team FROM filter WHERE team IN('".$team."') ";
+        $s_sql = "SELECT pid, picture, pname, dept, team FROM filter WHERE pname LIKE CONCAT('%','".$search."', '%')";
 
-        // Filters for each attriute
-        if(isset($_POST['gender'])){
-            $gender = implode("','", $_POST['gender']);
-            $sql .= "AND gender IN('".$gender."')";
+        // Additional search details like teams
+        if(isset($_POST['team'])){
+            $team = $_POST['team'];
+            $s_sql .= "AND team ='".$team."' ";
         }
 
-        if(isset($_POST['sport'])){
-            $sport = implode("','", $_POST['sport']);
-            $sql .= "AND sport IN('".$sport."')";
-        }
-
-        if(isset($_POST['dept'])){
-            $dept = implode("','", $_POST['dept']);
-            $sql .= "AND dept IN('".$dept."')";
-        }
-
-        $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-        $output = '';
+        // Send Query request
+        $result = mysqli_query($conn, $s_sql) or die(mysqli_error($conn));
 
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()){
@@ -76,4 +69,4 @@
         $sql_drop = "DROP TABLE filter";
         mysqli_query($conn, $sql_drop) or die(mysqli_error($conn));
     }
- ?>
+?>

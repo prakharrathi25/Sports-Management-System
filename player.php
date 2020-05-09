@@ -24,7 +24,7 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -129,17 +129,17 @@
                     <h3>Sport:</h3>
                     <p>
                         <?php
-                            $sql = "SELECT s.sName as sport, p.pid from sportDetails as s, playerDetails as p WHERE s.sID = p.primarySportID";
-                            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                            $curr_id = $_GET['id'];
+                            $s_sql = "SELECT s.sName as sport, p.pid from sportDetails as s, playerDetails as p WHERE s.sID = p.primarySportID AND p.pid = $curr_id";
+                            $result = mysqli_query($conn, $s_sql) or die(mysqli_error($conn));
                             $r1 = $result->fetch_assoc();
                             echo $r1['sport'];
-
                         ?>
                     </p>
                     <h3>Team:</h3>
                     <p>
                         <?php
-                            $tsql = "SELECT t.teamName as team , p.pid from teamDetails as t, playerDetails as p WHERE t.tid = p.teamID";
+                            $tsql = "SELECT t.teamName as team , p.pid from teamDetails as t, playerDetails as p WHERE t.tid = p.teamID AND p.pid = $curr_id";
                             $result = mysqli_query($conn, $tsql) or die(mysqli_error($conn));
                             $r2 = $result->fetch_assoc();
                             echo $r2['team'];
@@ -186,7 +186,7 @@
                         <p style="color: #ccc;">Copyright © 2020 SNU Sports. All rights reserved</p>
                     </div>
                 </div>
-            </div>    
+            </div>
         </div>
     </footer>
     </div>

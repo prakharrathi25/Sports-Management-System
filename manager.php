@@ -107,7 +107,7 @@
                                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                                 </li>
                             </ul>-->
-                
+
                 <div class="dropdown" style="float:right; margin-right: 125px; margin-top: 20px; margin-left: 600px;">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -246,10 +246,19 @@
                 <h5 class="text-center" id="textChange">Your Players</h5>
                 <hr>
 
+
+                <!--- SEARCH BAR --- >
+                <!-- Search form -->
+                <div class="md-form active-purple active-purple-2 mb-3">
+                  <input class="form-control" type="text" placeholder="Search for your favourite players" id="search" aria-label="Search" name="search" style="bacbackground-color: black; ">
+                </div>
+
                 <!-- Made a loader and displayed it through AJAX  -->
                 <div class="text-center">
                     <img src="assets/images/loader.gif" id="loader" alt="" width="200" style="display:none;">
                 </div>
+
+                <!-- Player Display begins --> 
                 <div class="row" id="result">
                     <?php
                         $sql = "SELECT p.pid, p.pname, p.Department, p.picture, t.teamName FROM playerDetails as p, teamDetails as t WHERE t.tid = p.teamID AND t.tid = '$page_id'";
@@ -334,7 +343,44 @@
     }
     </style>
 
-    <!-- Writing the AJAX Code -->
+
+    <!-- BEGIN jQuery and AJAX -->
+
+    <!-- Search Players AJAX and jQuery Code --->
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            // Event triggered when something is written
+            $("#search").keyup(function(){
+                var search = $(this).val();
+                console.log(search);
+                // First show a loader
+                $("#loader").show();
+
+                // Getting team variable
+                var team = "<?php
+                $page_id = $_GET['id'];
+                $sql = "SELECT teamName FROM teamDetails WHERE tid = '$page_id'";
+                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                $row = $result->fetch_assoc();
+                echo $row['teamName']?>";
+                console.log(team);
+
+                $.ajax({
+                    url: 'assets/actions/search_action.php',
+                    method: 'post',
+                    data: {query: search, team: team},
+                    success: function(response){
+                        $("#result").html(response);
+                        $('#loader').hide() // Hide the loader
+                        $('#textChange').text("Filtered Players")
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Writing the jQuery and AJAX Code for filtering  -->
     <script type="text/javascript">
         $(document).ready(function(){
 

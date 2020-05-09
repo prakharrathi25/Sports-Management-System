@@ -32,7 +32,7 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -189,7 +189,7 @@
                 <h5 class="text-center" id="textChange">All Players</h5>
                 <hr>
 
-                <!---- SEARCH BAR --- >
+                <!--- SEARCH BAR --- >
                 <!-- Search form -->
                 <div class="md-form active-purple active-purple-2 mb-3">
                   <input class="form-control" type="text" placeholder="Search for your favourite players" id="search" aria-label="Search" name="search" style="bacbackground-color: black; ">
@@ -278,18 +278,24 @@
             // Event triggered when something is written
             $("#search").keyup(function(){
                 var search = $(this).val();
+                console.log(search);
+                // First show a loader
+                $("#loader").show();
 
                 $.ajax({
-                    url: 'search_player.php',
+                    url: 'assets/actions/search_action.php',
                     method: 'post',
                     data: {query: search},
                     success: function(response){
-                        $("result").html(respose);
+                        $("#result").html(response);
+                        $('#loader').hide() // Hide the loader
+                        $('#textChange').text("Filtered Players")
                     }
                 });
             });
         });
     </script>
+
     <!--- Filter Players AJAX and jQuery Code --->
     <script type="text/javascript">
         $(document).ready(function(){
