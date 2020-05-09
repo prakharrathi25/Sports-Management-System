@@ -1,3 +1,21 @@
+<?php
+    include 'dbh.php';
+
+    // Get Player Details
+    $page_id = $_GET['id'];
+    $sql = "SELECT * FROM playerDetails, sportDetails WHERE sportDetails.sID = playerDetails.primarySportID AND pid = '$page_id'";
+    $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    $row = $result->fetch_assoc();
+
+    // Declare global teams array
+    $teams = array(
+        1=> "Panthers",
+        2=> "Bulls",
+        3=> "Phoenix",
+        4=> "Falcons",
+);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +36,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <title>Player Update</title>
+    <title>Player Update Page</title>
 </head>
 
 <body>
@@ -31,7 +49,7 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -97,74 +115,103 @@
                 <div class="row">
                     <h3>Name : </h3>
                 </div>
-                <p style=" word-wrap: break-word;">Prakhar Rathi</p>
+                <p style=" word-wrap: break-word;"><?php echo $row['pname']; ?></p>
                 <div class="row">
                     <h3>Gender : </h3>
                 </div>
-                <p style=" word-wrap: break-word;">Male</p>
+                <p style=" word-wrap: break-word;"><?php echo $row['Gender']; ?></p>
                 <div class="row">
                     <h3>Primary sport : </h3>
                 </div>
-                <p style=" word-wrap: break-word;">Basketball</p>
-                <div class="row">
-                    <h3>Secondary sport : </h3>
-                </div>
-                <p style=" word-wrap: break-word;">Cricket</p>
+                <p style=" word-wrap: break-word;"><?php echo $row['sName']; ?></p>
+
                 <div class="row">
                     <h3>Team : </h3>
                 </div>
-                <p style=" word-wrap: break-word;">Panthers</p>
+                <p style=" word-wrap: break-word;"><?php echo $teams[$row['teamID']]; ?></p>
                 <div class="row">
                     <h3>Are you a captain : </h3>
                 </div>
-                <p style=" word-wrap: break-word;">Yes</p>
+                <p style=" word-wrap: break-word;"><?php print ($row['isCaptain'] == 0) ? "No" : "Yes"; ?></p>
                 <div class="row">
                     <h3>Matches played : </h3>
                 </div>
-                <p style=" word-wrap: break-word;">10</p>
+                <p style=" word-wrap: break-word;"><?php echo $row['playedMatches']; ?></p>
                 <div class="row">
                     <h3>Matches won : </h3>
                 </div>
-                <p style=" word-wrap: break-word;">10</p>
+                <p style=" word-wrap: break-word;"><?php echo $row['wins']; ?></p>
             </div>
             <div class="col-lg-4">
                 <div class="row">
                     <h3>Select department : </h3>
                 </div>
-                <p style=" word-wrap: break-word;">CSE</p>
+                <p style=" word-wrap: break-word;"><?php echo $row['Department']; ?></p>
                 <div class="row">
                     <h3>Last Bid price : </h3>
                 </div>
-                <p style=" word-wrap: break-word;">10</p>
+                <p style=" word-wrap: break-word;"><?php echo $row['lastBid']; ?></p>
                 <div class="row">
                     <h3>Year of joining : </h3>
                 </div>
-                <p style=" word-wrap: break-word;">2018</p>
+                <p style=" word-wrap: break-word;"><?php echo $row['YearofJoining']; ?></p>
                 <div class="row">
                     <h3>Year of passing : </h3>
                 </div>
-                <p style=" word-wrap: break-word;">2022</p>
-                <div class="row">
-                    <h3>Level of Study : </h3>
-                </div>
-                <p style=" word-wrap: break-word;">Undergraduate</p>
+                <p style=" word-wrap: break-word;"><?php echo $row['YearofPassing']; ?></p>
                 <div class="row">
                     <h3>Your Favourite Quote </h3>
                 </div>
-                <p style=" word-wrap: break-word;">Bla bla bla</p>
+                <p style=" word-wrap: break-word;"><?php echo $row['quote']; ?></p>
                 <div class="row">
                     <h3>Highlights </h3>
                 </div>
-                <p style=" word-wrap: break-word;">blablabla</p>
+                <p style=" word-wrap: break-word;"><?php echo $row['highlight']; ?></p>
                 <div class="row">
             </div>
             <div class="col-lg-2">
             </div>
         </div>
     </div>
-    <form>
-        
+    <form action="assets/actions/update_action.php?id=<?php echo $page_id ?>" method="POST">
+        <div class="container">
+            <div class="row">
+                <div class="form-group col-lg-4">
+                  <label for="exampleFormControlSelect1">Field to change</label>
+                  <select class="form-control" id="update" name="update-field" required>
+                    <option value=1>Name</option>
+                    <option value=2>Department</option>
+                    <option value=3>Gender</option>
+                    <option value=4>Bid Price</option>
+                    <option value=5>Passing Year</option>
+                    <option value=6>Quote</option>
+                    <option value=7>Highlights</option>
+                    <option value=8>Matches Played</option>
+                    <option value=9>Matches Won</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-lg-3">
+                  <label for="exampleFormControlSelect1">Old Value</label><br>
+                  <input type="text" name="old" value="" placeholder="Old Value" required>
+                </div>
+
+                <div class="form-group col-lg-3">
+                  <label for="exampleFormControlSelect1">New Value</label><br>
+                  <input type="text" name="new" value="" placeholder="New Value" required>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group col-lg-2">
+                    <br>
+                    <button type="submit" name="update" class="btn btn-primary mb-2">Update</button>
+                </div>
+
+            </div>
+        </div>
     </form>
+
+
         <br>
         <br>
         <div class="col-lg-12">
