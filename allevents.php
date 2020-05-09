@@ -41,7 +41,7 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -155,12 +155,6 @@
                 <h5 class="text-center" id="textChange">All Upcoming Events</h5>
                 <hr>
 
-                <!---- SEARCH BAR --- >
-                <!-- Search form -->
-                <div class="md-form active-purple active-purple-2 mb-3">
-                  <input class="form-control" type="text" placeholder="Search for your favourite players" id="search" aria-label="Search" name="search" style="bacbackground-color: black; ">
-                </div>
-
                 <!---- DISPLAYING EVENTS  -->
                 <div class="text-center">
                     <img src="assets/images/loader.gif" id="loader" alt="" width="200" style="display:none;">
@@ -200,7 +194,7 @@
 
 
     <!--- FOOTER --->
-                            
+
     <br>
     <br>
     <div class="col-lg-12">
@@ -235,25 +229,6 @@
 
     <!-- Writing the AJAX and jQuery Code -->
 
-    <!-- Search Players AJAX and jQuery Code --->
-    <!-- <script type="text/javascript">
-        $(document).ready(function(){
-
-            // Event triggered when something is written
-            $("#search").keyup(function(){
-                var search = $(this).val();
-
-                $.ajax({
-                    url: 'search_player.php',
-                    method: 'post',
-                    data: {query: search},
-                    success: function(response){
-                        $("result").html(respose);
-                    }
-                });
-            });
-        });
-    </script> -->
     <!--- Filter Players AJAX and jQuery Code --->
     <script type="text/javascript">
         $(document).ready(function(){

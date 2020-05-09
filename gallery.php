@@ -16,7 +16,7 @@
 <body>
     <nav>
         <ul>
-            <!-- NAVBAR SPACE --> 
+            <!-- NAVBAR SPACE -->
         </ul>
     </nav>
 
@@ -56,5 +56,8 @@ body{
     font-family: sans-serif;
 }
 </style>
+
+<?php $conn -> close(); ?>
 </body>
+
 </html>
