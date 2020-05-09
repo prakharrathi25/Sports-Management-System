@@ -25,7 +25,7 @@
     <div class="col-lg-12">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="https://snu.edu.in/" style="width: max-content;"><img
-                    src="assets\images\snu_logo.jpg" class="img-fluid" style="width: max-content;"
+                    src="assets/images/snu_logo.jpg" class="img-fluid" style="width: max-content;"
                     alt="Responsive image"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,190 +87,84 @@
         </nav>
     </div>
                 <!--- NAVBAR END --->
-  <div class="container" style="overflow: hidden;">
-        <h1 style=" text-align: center; ">Player Update Form</h1>
-
-        <!-- Player registration Form -->
+    <br>
+    <br>
+    <div class="col-lg-12">
         <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <form style="width: 100%; margin: 0 auto;" action="player_reg.php" method="POST"
-                        enctype="multipart/form-data"></form>
-                    <!-- Text Input -->
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Player Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Player Full Name"
-                                name="name">
-                        </div>
-                    </div>
-                    <!-- Gender Input -->
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Select Gender</label>
-                            <select class="form-control" id="gender" name="gender" required>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                    </div>
-                    <!-- Played Matches -->
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Number of Matches Played</label>
-                            <input type="number" class="form-control" id="match_num" placeholder="10" name="match_num"
-                                required>
-                        </div>
-                    </div>
-                    <!-- Wins -->
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Number of Matches Won</label>
-                            <input type="number" class="form-control" id="win_num" placeholder="10" name="win_num"
-                                required>
-                        </div>
-                    </div>
-                    <!-- Picture Upload -->
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Upload a picture</label>
-                            <input type="file" class="form-control" id="plr_img" placeholder="10" name="plr_img"
-                                required>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Are you a Captain?</label>
-                            <select class="form-control" id="level" name="Captain" required>
-                                <option value="Yes">Yes</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
-                    </div>
-                    <!--<div class="col-sm-3">-->
-                        <!-- Primary sport -->
-                        <!--<div class="form-group">
-                            <label for="exampleFormControlSelect1">Primary Sport</label>
-                            <select class="form-control" id="p_sport" name="p_sport" required>
-                                <option value=1>Football</option>
-                                <option value=2>Tennis</option>
-                                <option value=3>Basketball</option>
-                                <option value=4>Badminton</option>
-                                <option value=5>Volleball</option>
-                                <option value=6>Cricket</option>
-                                <option value=7>Table Tennis</option>
-                                <option value=8>Squash</option>
-                                <option value=9>Chess</option>
-                            </select>
-                        </div>
-                    </div>-->
-                    <!-- Secondary sport -->
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Secondary Sport</label>
-                            <select class="form-control" id="s_sport" name="s_sport" required>
-                                <option value=1>Football</option>
-                                <option value=2>Tennis</option>
-                                <option value=3>Basketball</option>
-                                <option value=4>Badminton</option>
-                                <option value=5>Volleball</option>
-                                <option value=6>Cricket</option>
-                                <option value=7>Table Tennis</option>
-                                <option value=8>Squash</option>
-                                <option value=9>Chess</option>
-                            </select>
-                        </div>
-                    </div>
-                    <!-- Team Input -->
-                    <div class="col-sm-2">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Select Team</label>
-                            <select class="form-control" id="team" name="team" required>
-                                <option value=1>Panthers</option>
-                                <option value=2>Bulls</option>
-                                <option value=3>Phoniex</option>
-                                <option value=4>Falcons</option>
-                            </select>
-                        </div>
-                    </div>
-                    <!-- Last Bid  -->
-                    <div class="col-sm-2">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Last Bid Price</label>
-                            <input type="number" class="form-control" id="bid" placeholder="10" name="bid" required>
-                        </div>
-                    </div>
-                    <!-- Department selction -->
-                    <div class="col-sm-2">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Select Department</label>
-                            <select class="form-control" id="dept" name="dept" required>
-                                <option value="CSE">CSE</option>
-                                <option value="ECE/EEE">ECE/EEE</option>
-                                <option value="Mechanical">Mechanical</option>
-                                <option value="Civil">Civil</option>
-                                <option value="Chemical">Chemical</option>
-                                <option value="History">History</option>
-                                <option value="Sociology">Sociology</option>
-                                <option value="Economics">Economics</option>
-                                <option value="IRGS">IRGS</option>
-                                <option value="BMS">BMS</option>
-                                <option value="Mathematics">Mathematics</option>
-                                <option value="Physics">Physics</option>
-                                <option value="Chemistry">Chemistry</option>
-                                <option value="Life Sciences">Life Sciences</option>
-                            </select>
-                        </div>
-                    </div>
-                    <!-- Join Year  -->
-                    <!--<div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Select the year of joining</label>
-                            <input type="number" class="form-control" id="join_year" placeholder="2018" name="join_year"
-                                required>
-                        </div>
-                    </div>-->
-                    <!-- pass Year  -->
-                    <!--<div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlInput1">Select the year of passing</label>
-                            <input type="number" class="form-control" id="pass_year" placeholder="2018" name="pass_year"
-                                required>
-                        </div>
-                    </div>-->
-                    <!-- Level of Study -->
-                    <!--<div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Level of Study</label>
-                            <select class="form-control" id="level" name="level" required>
-                                <option value="ug">Undergraduate</option>
-                                <option value="g">Graduate</option>
-                                <option value="d">Doctoral</option>
-                            </select>
-                        </div>
-                    </div>-->
-                    <!-- Favourite Quote -->
-                    <div class="col-sm-9">
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Change Your Favourite Quote</label>
-                            <textarea class="form-control" id="quote" rows="1" name="quote"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Update Highlights</label>
-                            <textarea class="form-control" id="quote" rows="3" name="Highlights"></textarea>
-                        </div>
-                        </form>
-                    </div>
-                </div>
+            <div class="col-lg-2">
             </div>
-            <!-- Submit Button -->
-            <button type="submit" name="submit-button" class="btn btn-primary mb-2">Submit Details</button>
-
+            <div class="col-lg-4">
+                <div class="row">
+                    <h3>Name : </h3>
+                </div>
+                <p style=" word-wrap: break-word;">Prakhar Rathi</p>
+                <div class="row">
+                    <h3>Gender : </h3>
+                </div>
+                <p style=" word-wrap: break-word;">Male</p>
+                <div class="row">
+                    <h3>Primary sport : </h3>
+                </div>
+                <p style=" word-wrap: break-word;">Basketball</p>
+                <div class="row">
+                    <h3>Secondary sport : </h3>
+                </div>
+                <p style=" word-wrap: break-word;">Cricket</p>
+                <div class="row">
+                    <h3>Team : </h3>
+                </div>
+                <p style=" word-wrap: break-word;">Panthers</p>
+                <div class="row">
+                    <h3>Are you a captain : </h3>
+                </div>
+                <p style=" word-wrap: break-word;">Yes</p>
+                <div class="row">
+                    <h3>Matches played : </h3>
+                </div>
+                <p style=" word-wrap: break-word;">10</p>
+                <div class="row">
+                    <h3>Matches won : </h3>
+                </div>
+                <p style=" word-wrap: break-word;">10</p>
+            </div>
+            <div class="col-lg-4">
+                <div class="row">
+                    <h3>Select department : </h3>
+                </div>
+                <p style=" word-wrap: break-word;">CSE</p>
+                <div class="row">
+                    <h3>Last Bid price : </h3>
+                </div>
+                <p style=" word-wrap: break-word;">10</p>
+                <div class="row">
+                    <h3>Year of joining : </h3>
+                </div>
+                <p style=" word-wrap: break-word;">2018</p>
+                <div class="row">
+                    <h3>Year of passing : </h3>
+                </div>
+                <p style=" word-wrap: break-word;">2022</p>
+                <div class="row">
+                    <h3>Level of Study : </h3>
+                </div>
+                <p style=" word-wrap: break-word;">Undergraduate</p>
+                <div class="row">
+                    <h3>Your Favourite Quote </h3>
+                </div>
+                <p style=" word-wrap: break-word;">Bla bla bla</p>
+                <div class="row">
+                    <h3>Highlights </h3>
+                </div>
+                <p style=" word-wrap: break-word;">blablabla</p>
+                <div class="row">
+            </div>
+            <div class="col-lg-2">
+            </div>
         </div>
+    </div>
+    <form>
+        
+    </form>
         <br>
         <br>
         <div class="col-lg-12">
