@@ -240,11 +240,11 @@
         </div>
     </div>
 
-
     <!--- FOOTER --->
     <br>
     <br>
     <div class="col-lg-12">
+        <div class="row">
         <footer class="main-block dark-bg" style="background: black; padding: 90px;">
             <div class="container">
                 <div class="row" style="flex-wrap: wrap; display: flex;">
@@ -256,6 +256,7 @@
                 </div>
             </div>
         </footer>
+        </div>
     </div>
 
 
