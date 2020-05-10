@@ -27,6 +27,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
+              <a class="nav-link" href="index.php">
+                <h1> Home </h1><span class="sr-only">(current)</span>
+              </a>
+            </li>
+                <li class="nav-item active">
                     <a class="nav-link" href="allevents.php">
                         <h1> Events </h1><span class="sr-only">(current)</span>
                     </a>
