@@ -78,16 +78,6 @@
                             <h1> Gallery </h1><span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="project.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <h1>teams</h1><span class="sr-only">(current)</span>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="team_page.php?id=1">Panthers</a>
-                        <a class="dropdown-item" href="team_page.php?id=2">Bulls</a>
-                        <a class="dropdown-item" href="team_page.php?id=3">Phoenix</a>
-                        <a class="dropdown-item" href="team_page.php?id=4">Bulls</a>
-                    </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="calendar\calendar.php">
                             <h1> Calendar </h1><span class="sr-only">(current)</span>

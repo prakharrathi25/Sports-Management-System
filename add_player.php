@@ -73,11 +73,6 @@
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="project.html">
-                <h1> Teams </h1><span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item active">
               <a class="nav-link" href="calendar\calendar.php">
                 <h1> Calendar </h1><span class="sr-only">(current)</span>
               </a>

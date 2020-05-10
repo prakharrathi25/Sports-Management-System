@@ -29,63 +29,66 @@
     <title>Team Display</title>
   </head>
   <body>
-<div class="col-lg-12">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="https://snu.edu.in/" style="width: max-content;"><img src="assets\images\snu_logo.jpg" class="img-fluid" style="width: max-content;"
-            alt="Responsive image"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<div class="container-fluid">
+        <!-- NAVBAR OF THE PAGE -->
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="https://snu.edu.in/" style="width: max-content;"><img
+                    src="assets\images\snu_logo.jpg" class="img-fluid" style="width: max-content;"
+                    alt="Responsive image"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="https://snu.edu.in/events?cat=7">
-                <h1> Events </h1><span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="https://snu.edu.in/events?cat=7">
-                <h1> News </h1><span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=2#qt-sports_section">
-                <h1> Results </h1><span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=3#qt-sports_section">
-                <h1> SNUSL </h1><span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=4#qt-sports_section">
-                <h1> Staff </h1><span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=5#qt-sports_section">
-                <h1> Facility </h1><span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=6#qt-sports_section">
-                <h1> Calender </h1><span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <div class="dropdown" style="float:right; margin-right: 125px; margin-top: 20px; margin-left: 600px;">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                Logged in as: <span>Prakhar</span>
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="playerlogin.html">Logout</a>
-              </div>
-          </div>
-          </ul>
-      </nav>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php">
+                            <h1> Home </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="allevents.php">
+                            <h1> Events </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="NewsWall\B\Bootstrap.html">
+                            <h1> News </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="all_players.php">
+                            <h1> Players </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="about.html">
+                            <h1> SNUSL </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="gallery.php">
+                            <h1> Gallery </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="calendar\calendar.php">
+                            <h1> Calendar </h1><span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <div class="dropdown" style="float:right; margin-right: 125px; margin-top: 20px; margin-left: 600px;">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login:<span class="glyphicon glyphicon-user"></span>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="login.php">player/Manager Login</a>
+                        </div>
+                    </div>
+                </ul>
+        </nav>
     </div>
     <!--- Dislay of team details and filters starts -->
     <div class="container-fluid">
