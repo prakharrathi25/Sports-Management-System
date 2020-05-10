@@ -90,10 +90,15 @@
                     <div class="dropdown" style="float:right; margin-right: 125px; margin-top: 20px; margin-left: 600px;">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Logged in as: <span>Prakhar</span>
+                            Logged in as: <span><?php
+                                $sql = "SELECT * FROM users WHERE id = '$page_id'";
+                                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                                $user_row = $result->fetch_assoc();
+                                echo $user_row['name'];
+                            ?></span>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="playerlogin.html">Logout</a>
+                            <a class="dropdown-item" href="logout.php">Logout</a>
                         </div>
                     </div>
                 </ul>
@@ -162,6 +167,10 @@
                     <h3>Highlights </h3>
                 </div>
                 <p style=" word-wrap: break-word;"><?php echo $row['highlight']; ?></p>
+                <div class="row">
+                    <h3>Rating </h3>
+                </div>
+                <p style=" word-wrap: break-word;"><?php echo $row['rating']; ?></p>
                 <div class="row">
             </div>
             <div class="col-lg-2">

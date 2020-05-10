@@ -30,56 +30,6 @@
     $fields = array("bogus", "pname", "Department", "Gender", "lastBid", "YearofPassing", "quote", "highlight", "playedMatches", "wins");
 
 ?>
-<!-- <div class="col-lg-12">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="https://snu.edu.in/" style="width: max-content;"><img src="assets\images\snu_logo.jpg" class="img-fluid" style="width: max-content;"
-        alt="Responsive image"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" id="header1">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="allevents.php">
-            <h1> Events </h1><span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="https://snu.edu.in/events?cat=7">
-            <h1> News </h1><span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=2#qt-sports_section">
-            <h1> Results </h1><span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=3#qt-sports_section">
-            <h1> SNUSL </h1><span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=4#qt-sports_section">
-            <h1> Staff </h1><span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=5#qt-sports_section">
-            <h1> Facility </h1><span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="https://snu.edu.in/campus-life/sports?qt-sports_section=6#qt-sports_section">
-            <h1> Calender </h1><span class="sr-only">(current)</span>
-          </a>
-        </li>
-      </ul>
-  </nav>
-</div> -->
-
 
 <?php
 
@@ -94,29 +44,80 @@
         $new = $_POST['new'];
         $field = $fields[$fieldVal];
 
-        // Check old value first
-        $sql = "SELECT ".$field." from playerDetails WHERE pid = $page_id";
-        $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
-        $row = $result->fetch_assoc();
-
-        if($row[$field] == $old)
+        // For dynamic rating system
+        if($field == 'playedMatches' || $field == 'wins')
         {
-            echo "<h1> UPDATE SUCCESSFUL </h1>";
-            $sql = "UPDATE playerDetails SET ".$field." = '".$new."' WHERE pid = $page_id";
-            echo $sql;
-            //Perform a query, check for error
-            mysqli_query($conn, $sql) or die(mysqli_error($conn));
-        }else{
-            echo "<h1> Values don't match </h1>";
-        }
+            // Check old value first
+            $sql = "SELECT playedMatches, wins, rating from playerDetails WHERE pid = $page_id";
+            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+            $row = $result->fetch_assoc();
 
+            if($row[$field] == $old)
+            {
+                echo "<h1> UPDATE SUCCESSFUL </h1>";
+                $sql = "UPDATE playerDetails SET ".$field." = '".$new."' WHERE pid = $page_id";
+                echo $sql. "<br>";
+                //Perform a query, check for error
+                mysqli_query($conn, $sql) or die(mysqli_error($conn));
+
+                /* EDIT RATING SECTION DYNAMIC RATING */
+
+                $sql = "SELECT playedMatches, wins, rating from playerDetails WHERE pid = $page_id";
+                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                $row = $result->fetch_assoc();
+
+                // Get details
+                $rating = $row['rating'];
+                $played = $row['playedMatches'];
+                $won = $row['wins'];
+
+                $rating = ($won * 100 / $played);
+                $sql = "UPDATE playerDetails SET rating = $rating WHERE pid = $page_id";
+                echo $sql;
+
+                //Perform a query, check for error
+                mysqli_query($conn, $sql) or die(mysqli_error($conn));
+
+                $sql = "SELECT playedMatches, wins, rating from playerDetails WHERE pid = $page_id";
+                $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+                $row = $result->fetch_assoc();
+
+                // Get details
+                $rating = $row['rating'];
+                $played = $row['playedMatches'];
+                $won = $row['wins'];
+
+            }else{
+                echo "<h1> Values don't match </h1>";
+            }
+
+        // If changes are not made to the number of matches
+        }else{
+            // Check old value first
+            $sql = "SELECT ".$field." from playerDetails WHERE pid = $page_id";
+            $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+            $row = $result->fetch_assoc();
+
+            if($row[$field] == $old)
+            {
+                echo "<h1> UPDATE SUCCESSFUL </h1>";
+                $sql = "UPDATE playerDetails SET ".$field." = '".$new."' WHERE pid = $page_id";
+                echo $sql;
+                //Perform a query, check for error
+                mysqli_query($conn, $sql) or die(mysqli_error($conn));
+
+            }else{
+                echo "<h1> Values don't match </h1>";
+            }
+        }
+            
     }
 ?>
 
 
 <div class="jumbotron text-xs-center">
-  <h1 class="display-3">Thank You!</h1>
-  <p class="lead"><strong>Your entry has been updated!</strong></p>
+  <!-- <h1 class="display-3">Thank You!</h1>
+  <p class="lead"><strong>Your entry has been updated!</strong></p> -->
   <hr>
   <p>
     View Players? <a href="./../all_players.php">View Players</a>
